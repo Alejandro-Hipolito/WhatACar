@@ -2,7 +2,7 @@
 This module takes care of starting the API Server, Loading the DB and Adding the endpoints
 """
 from flask import Flask, request, jsonify, url_for, Blueprint
-from api.models import db, User
+from api.models import db, User, Garage
 from api.utils import generate_sitemap, APIException
 from flask_jwt_extended import create_access_token
 from flask_jwt_extended import jwt_required, get_jwt_identity
@@ -45,7 +45,7 @@ def login():
 @api.route('/signup', methods=['POST'])
 def signup():
     data = request.get_json()
-    nameandsur = data.get('nameandsur')
+    full_name = data.get('full_name')
     email = data.get('email')
     password = data.get('password')
     id_document = data.get('id_document')
@@ -54,7 +54,7 @@ def signup():
     role = data.get('role')
     phone = data.get('phone')
 
-    register = User(nameandsur = nameandsur, email=email, password=password, id_document=id_document, id_number=id_number, address=address, role=role, phone=phone)
+    register = User(full_name = full_name, email=email, password=password, id_document=id_document, id_number=id_number, address=address, role=role, phone=phone)
     print(register)
 
     if register is None:
@@ -64,3 +64,14 @@ def signup():
     db.session.commit()
 
     return jsonify({"message" : "Signed up successfully!"}), 200
+
+
+@api.route('/garage-profile/<int:garage_id>', methods=['GET'])
+def get_garage_profile(garage_id):
+    
+    garage_profile = Garage.query.get(garage_id)
+
+    if garage_profile:
+        return jsonify(garage_profile.serialize())
+    else:
+        return jsonify({'error': 'Garage not found'})

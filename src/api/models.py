@@ -26,7 +26,7 @@ class User_role(Enum): #Solo se pueden usar los roles que pongamos aquí
 
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    nameandsur = db.Column(db.String(100), nullable=False)
+    full_name = db.Column(db.String(100), nullable=False)
     #surname = db.Column(db.String(40), nullable=False)
     email = db.Column(db.String(80), unique=True, nullable=False)
     password = db.Column(db.String(80), unique=False, nullable=False)
@@ -34,7 +34,7 @@ class User(db.Model):
     id_number = db.Column(db.String(10), unique=True, nullable=False)
     address = db.Column(db.String(120), nullable=True) 
     role = db.Column(db.Enum(User_role), nullable=False, default=User_role.BUYER)
-    phone = db.Column(db.Integer, nullable=False) #Podría ser único
+    phone = db.Column(db.Integer, nullable=False) 
     #is_active = db.Column(db.Boolean(), unique=False, nullable=False)
 
     products = db.relationship('Product', backref='user') # Un usuario puede tener muchos productos asociados (relación de 1 a muchos)
@@ -54,7 +54,7 @@ class User(db.Model):
     def serialize(self):
         return {
             "id": self.id,
-            "nameandsur": self.nameandsur,
+            "full_name": self.full_name,
             #"surname": self.surname,
             "email": self.email,
             "id_document": self.id_document.value,
