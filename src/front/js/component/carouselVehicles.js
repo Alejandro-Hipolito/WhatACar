@@ -28,10 +28,16 @@ export const CarouselVehicles = () => {
                       </div>
 
                       <div className="d-flex justify-content-end">                
-                      <button className="btn btn-warning">
-                          <i className="fa-solid fa-heart"></i>
-
-                          </button>
+                     
+                      <Link
+                        id="heartCard"
+                        href="#"
+                        role="button"
+                        aria-expanded="page"
+                        to="/profile"
+                      >
+                        <i className="fa-regular fa-heart"></i>
+                      </Link>
                       </div>
                     </div>
 
@@ -41,6 +47,8 @@ export const CarouselVehicles = () => {
         
             </div>
             </div>
+
+            
           </div>
     
           );

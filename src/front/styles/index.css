@@ -28,3 +28,16 @@
 #vehicleCardTittle {
     font-size: medium;
 }
+
+#heartCard {
+    font-size: 30px;
+    position: absolute;
+    border: 1px blue solid;
+    border-radius: 10px;
+    width: 50px;
+    border-color: rgb(108, 167, 254);
+}
+
+.card {
+    border-radius: 10px;
+}
