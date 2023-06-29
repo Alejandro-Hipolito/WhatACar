@@ -5,6 +5,7 @@ import lottie from 'lottie-web';
 import { defineElement } from 'lord-icon-element';
 import { useNavigate } from "react-router-dom";
 import { CarouselVehicles } from "../component/carouselVehicles";
+import { GarageAdvice } from "../component/garageAdvice";
 
 
 
@@ -67,6 +68,8 @@ export const Home = () => {
         </form>
       </div>
         <CarouselVehicles />
+        <br></br>
+        <GarageAdvice />
 
     </div>
   );

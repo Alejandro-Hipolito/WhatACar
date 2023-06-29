@@ -20,7 +20,11 @@ export const CarouselVehicles = () => {
                 <div className="col-12 col-md-4">
                   <div className="card" style={{width: "18rem"}}>
                     <img src={carImage} className="card-img-top" alt="..."/>
-
+                    <div className="d-flex justify-content-end m-2">
+                      <i class="fa-solid fa-star" style={{"color": "#bbc615"}}></i>
+                      <i class="fa-solid fa-star" style={{"color": "#bbc615"}}></i>
+                      <i class="fa-solid fa-star" style={{"color": "#bbc615"}}></i>
+                    </div>
                     <div className="card-body d-flex justify-content-between">
                       <div>
                         <h5 className="card-title justify-content-start d-flex" id="vehicleCardTittle">Coche fantástico</h5>
