@@ -77,12 +77,49 @@
   }
   
 
-  .btn-mas {
-    height: 40px;
-    width: 65px;
-  }
 
   .container-garage {
 
     background-color: white;
+    border-radius: 12px;
+    z-index: 0;
   }
+
+  .garageImageLanding {
+
+    max-width: 350px;
+    max-height: 250px;
+    margin-top: -140px;
+    margin-left: -40px;
+    position: relative;
+    float: left;
+    border-radius: 10%;
+  }
+
+ .textGarageLeft {
+    float: right
+ }
+ .textGarageRight {
+    float: left
+ }
+
+
+ .buttonGarage {
+    position: relative;
+    margin-bottom: -2px;
+    margin-right: -5px;
+
+
+ }
+
+
+ .toolIcon {
+   font-size: 10em;
+   position: relative;
+   z-index: 1;
+   
+
+   
+
+}
+
