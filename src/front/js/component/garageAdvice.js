@@ -2,6 +2,7 @@ import React, {useContext} from "react";
 import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
 import { ThemeContext } from "../layout";
+import "../../styles/index.css";
 
 
 
@@ -24,7 +25,10 @@ export const GarageAdvice = () => {
                     <h5>Consulta nuestros talleres</h5>
                     <div className="d-flex">
                         <p>Tasamos vuestros vehículos como garantía su estado. Las ventas serán más rápidas y las compras serán más seguras así.</p>
-                        <span>+</span>
+                            <button className="nav-link btn-plus mb-2 me-3">
+                              <i className="fa-solid fa-plus"></i>
+                            </button>
+
                     </div>
                     
                 </div>
@@ -42,7 +46,9 @@ export const GarageAdvice = () => {
                         </div>
                     <div className="d-flex">
                         <p>Date de alta y ayuda a vendedores y compradores a certificar el estado del vehículo.</p>
-                        <span>+</span>
+                        <button className="nav-link btn-plus mb-2 me-3">
+                            <i className="fa-solid fa-plus"></i>
+                        </button>
                     </div>
 
 
