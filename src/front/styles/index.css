@@ -50,6 +50,23 @@
 }
 
 
+
+.btn-plus {
+    display: flex;
+    align-items: center;
+    height: 28px;
+    width: 36px;
+    margin: auto;
+    background-color: rgb(15, 76, 117);
+    color: white;
+    border-radius: 7px;
+    border-color: rgb(15, 76, 117);
+    border-top: rgb(15, 76, 117);
+    border-left: rgb(15, 76, 117);
+    border-right: rgb(15, 76, 117);
+    border-bottom: rgb(15, 76, 117);
+  }
+
 .btn-plus:hover {
     background-color: rgb(36, 104, 183);
   }
@@ -59,3 +76,13 @@
     margin-left: 4px;
   }
   
+
+  .btn-mas {
+    height: 40px;
+    width: 65px;
+  }
+
+  .container-garage {
+
+    background-color: white;
+  }

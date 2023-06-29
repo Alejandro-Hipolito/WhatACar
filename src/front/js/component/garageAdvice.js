@@ -14,39 +14,36 @@ export const GarageAdvice = () => {
 
 
     return (
-      <div className="container">
-         <div className="wrapper row">
-            <div className="col-6 d-flex">
-                <div className="col-2">
-                <img src={garageImage} className="card-img" alt="..."/>
-
+      <div className="container" >
+         <div className="wrapper  mx-4 d-flex justify-content-between">
+            <div className="col-6 d-flex container-garage">
+                <div >
+                    <img src={garageImage} className="card-img" alt="..."/>
                 </div>
+
                 <div>
-                    <h5>Consulta nuestros talleres</h5>
+                    <div>
+                        <h5>Consulta nuestros talleres</h5> 
+                    </div>
                     <div className="d-flex">
                         <p>Tasamos vuestros vehículos como garantía su estado. Las ventas serán más rápidas y las compras serán más seguras así.</p>
-                            <button className="nav-link btn-plus mb-2 me-3">
-                              <i className="fa-solid fa-plus"></i>
-                            </button>
-
+                        <button className="btn-plus btn-mas position-relative bottom-0 end-0">
+                            <i className="fa-solid fa-plus"></i>
+                        </button>
                     </div>
-                    
                 </div>
-
-
-
             </div>
 
 
 
-            <div className="col-6 d-flex">
-                <div className="wrapper-row">
+            <div className="col-6 d-flex container-garage">
+                <div className="wrapper">
                     <div >
                         <h5>¿Eres un taller?</h5>
                         </div>
                     <div className="d-flex">
                         <p>Date de alta y ayuda a vendedores y compradores a certificar el estado del vehículo.</p>
-                        <button className="nav-link btn-plus mb-2 me-3">
+                        <button className="btn-plus btn-mas  mt-5">
                             <i className="fa-solid fa-plus"></i>
                         </button>
                     </div>
