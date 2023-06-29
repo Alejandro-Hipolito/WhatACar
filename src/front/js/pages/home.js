@@ -1,10 +1,12 @@
 import React, { useContext, useState } from "react";
 import { Context } from "../store/appContext";
-import rigoImageUrl from "../../img/rigo-baby.jpg";
 import "../../styles/home.css";
 import lottie from 'lottie-web';
 import { defineElement } from 'lord-icon-element';
 import { useNavigate } from "react-router-dom";
+import { CarouselVehicles } from "../component/carouselVehicles";
+
+
 
 
 
@@ -64,6 +66,8 @@ export const Home = () => {
           {displaySearchButton()}
         </form>
       </div>
+        <CarouselVehicles />
+
     </div>
   );
 };
