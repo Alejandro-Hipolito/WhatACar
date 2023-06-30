@@ -3,11 +3,14 @@ import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
 import { ThemeContext } from "../layout";
 import { useNavigate } from "react-router-dom";
+import lottie from 'lottie-web';
+import { defineElement } from 'lord-icon-element';
 
 
 
 export const CarouselVehicles = () => {
     
+    defineElement(lottie.loadAnimation);
     const {store, actions} = useContext(Context)
     const carImage = "https://images.coches.com/_vn_/kia/Sportage/c399cf1d98a95d24f8e8715dd0b13fb2.jpg?p=cc_vn_high"
     const navigate = useNavigate()
@@ -54,12 +57,17 @@ export const CarouselVehicles = () => {
                      
                       <Link
                         id="heartCard"
-                        href="#"
-                        role="button"
-                        aria-expanded="page"
                         to="/profile"
                       >
-                        <i className="fa-regular fa-heart"></i>
+                        <script src="https://cdn.lordicon.com/bhenfmcm.js"></script>
+                        <lord-icon
+
+                            src="https://cdn.lordicon.com/rjzlnunf.json"
+                            trigger="hover"
+                            colors={{"primary": "#0d5acb", "secondary":"#08a88a"}}
+                            state="hover-1"
+                            style={{"width":"50px", "height":"30px"}}>
+                        </lord-icon>
                       </Link>
                       </div>
                     </div>
@@ -107,12 +115,17 @@ export const CarouselVehicles = () => {
                      
                       <Link
                         id="heartCard"
-                        href="#"
-                        role="button"
-                        aria-expanded="page"
                         to="/profile"
                       >
-                        <i className="fa-regular fa-heart"></i>
+                        <script src="https://cdn.lordicon.com/bhenfmcm.js"></script>
+                        <lord-icon
+
+                            src="https://cdn.lordicon.com/rjzlnunf.json"
+                            trigger="hover"
+                            colors={{"primary": "#0d5acb", "secondary":"#08a88a"}}
+                            state="hover-1"
+                            style={{"width":"50px", "height":"30px"}}>
+                        </lord-icon>
                       </Link>
                       </div>
                     </div>
@@ -159,12 +172,17 @@ export const CarouselVehicles = () => {
                      
                       <Link
                         id="heartCard"
-                        href="#"
-                        role="button"
-                        aria-expanded="page"
                         to="/profile"
                       >
-                        <i className="fa-regular fa-heart"></i>
+                        <script src="https://cdn.lordicon.com/bhenfmcm.js"></script>
+                        <lord-icon
+
+                            src="https://cdn.lordicon.com/rjzlnunf.json"
+                            trigger="hover"
+                            colors={{"primary": "#0d5acb", "secondary":"#08a88a"}}
+                            state="hover-1"
+                            style={{"width":"50px", "height":"30px"}}>
+                        </lord-icon>
                       </Link>
                       </div>
                     </div>
@@ -209,12 +227,17 @@ export const CarouselVehicles = () => {
                      
                       <Link
                         id="heartCard"
-                        href="#"
-                        role="button"
-                        aria-expanded="page"
                         to="/profile"
                       >
-                        <i className="fa-regular fa-heart"></i>
+                        <script src="https://cdn.lordicon.com/bhenfmcm.js"></script>
+                        <lord-icon
+
+                            src="https://cdn.lordicon.com/rjzlnunf.json"
+                            trigger="hover"
+                            colors={{"primary": "#0d5acb", "secondary":"#08a88a"}}
+                            state="hover-1"
+                            style={{"width":"50px", "height":"30px"}}>
+                        </lord-icon>
                       </Link>
                       </div>
                     </div>
@@ -259,12 +282,17 @@ export const CarouselVehicles = () => {
                      
                       <Link
                         id="heartCard"
-                        href="#"
-                        role="button"
-                        aria-expanded="page"
                         to="/profile"
                       >
-                        <i className="fa-regular fa-heart"></i>
+                        <script src="https://cdn.lordicon.com/bhenfmcm.js"></script>
+                        <lord-icon
+
+                            src="https://cdn.lordicon.com/rjzlnunf.json"
+                            trigger="hover"
+                            colors={{"primary": "#0d5acb", "secondary":"#08a88a"}}
+                            state="hover-1"
+                            style={{"width":"50px", "height":"30px"}}>
+                        </lord-icon>
                       </Link>
                       </div>
                     </div>
@@ -309,12 +337,17 @@ export const CarouselVehicles = () => {
                      
                       <Link
                         id="heartCard"
-                        href="#"
-                        role="button"
-                        aria-expanded="page"
                         to="/profile"
                       >
-                        <i className="fa-regular fa-heart"></i>
+                        <script src="https://cdn.lordicon.com/bhenfmcm.js"></script>
+                        <lord-icon
+
+                            src="https://cdn.lordicon.com/rjzlnunf.json"
+                            trigger="hover"
+                            colors={{"primary": "#0d5acb", "secondary":"#08a88a"}}
+                            state="hover-1"
+                            style={{"width":"50px", "height":"30px"}}>
+                        </lord-icon>
                       </Link>
                       </div>
                     </div>
