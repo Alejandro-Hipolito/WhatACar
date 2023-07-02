@@ -90,11 +90,32 @@
     max-width: 300px;
     max-height: 300px;
     margin-top: -140px;
-    
+    transition: transform .2s;
     position: relative;
     float: left;
     border-radius: 10%;
+
+    
   }
+
+  .garageImageLanding:hover {
+    -ms-transform: scale(1.5); /* IE 9 */
+    -webkit-transform: scale(1.5); /* Safari 3-8 */
+    transform: scale(1.5); 
+  }
+
+.titleAdviceGarage {
+  color: white;
+  text-decoration-line: none;
+}
+
+.tittleAdviceGarage:hover {
+  color: rgb(153, 154, 153);
+
+}
+
+
+
 
  .textGarageLeft {
     float: right

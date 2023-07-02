@@ -61,11 +61,10 @@ export const CarouselVehicles = () => {
                       >
                         <script src="https://cdn.lordicon.com/bhenfmcm.js"></script>
                         <lord-icon
-
                             src="https://cdn.lordicon.com/rjzlnunf.json"
                             trigger="hover"
-                            colors={{"primary": "#0d5acb", "secondary":"#08a88a"}}
-                            state="hover-1"
+                            colors="primary:#1663c7,secondary:#16a9c7"
+                            stroke="80"
                             style={{"width":"50px", "height":"30px"}}>
                         </lord-icon>
                       </Link>
@@ -119,11 +118,10 @@ export const CarouselVehicles = () => {
                       >
                         <script src="https://cdn.lordicon.com/bhenfmcm.js"></script>
                         <lord-icon
-
                             src="https://cdn.lordicon.com/rjzlnunf.json"
                             trigger="hover"
-                            colors={{"primary": "#0d5acb", "secondary":"#08a88a"}}
-                            state="hover-1"
+                            colors="primary:#1663c7,secondary:#16a9c7"
+                            stroke="80"
                             style={{"width":"50px", "height":"30px"}}>
                         </lord-icon>
                       </Link>
@@ -174,13 +172,66 @@ export const CarouselVehicles = () => {
                         id="heartCard"
                         to="/profile"
                       >
-                        <script src="https://cdn.lordicon.com/bhenfmcm.js"></script>
+                       <script src="https://cdn.lordicon.com/bhenfmcm.js"></script>
                         <lord-icon
-
                             src="https://cdn.lordicon.com/rjzlnunf.json"
                             trigger="hover"
-                            colors={{"primary": "#0d5acb", "secondary":"#08a88a"}}
-                            state="hover-1"
+                            colors="primary:#1663c7,secondary:#16a9c7"
+                            stroke="80"
+                            style={{"width":"50px", "height":"30px"}}>
+                        </lord-icon>
+                      </Link>
+                      </div>
+                    </div>
+
+                  </div>
+                  
+                </div>
+                <div className="col-12 col-md-4">
+                  <div className="card" style={{width: "18rem"}}>
+                  <div class="flip-card">
+                  <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                    <img src={carImage} className="card-img-top" alt="..."/>
+                    </div>
+                    <div class="flip-card-back">
+                      <Link to="/login" style={{ color: 'white', textDecoration: 'none' }} className="link-hover">
+                      <h3 className="pt-2">Peugeot 507</h3> 
+                      </Link>
+                      <p>Matriculación: 2020</p> 
+                      <p>Cambio: Automático</p>
+                      <p>180.000 km</p>
+                      <p>Ubicación: Migard</p>
+                    </div>
+                  </div>
+                </div>
+                    <div className="d-flex justify-content-end m-2">
+                      <i class="fa-solid fa-star" style={{"color": "#bbc615"}}></i>
+                      <i class="fa-solid fa-star" style={{"color": "#bbc615"}}></i>
+                      <i class="fa-solid fa-star" style={{"color": "#bbc615"}}></i>
+                    </div>
+                    <div className="card-body d-flex justify-content-between">
+                      <div>
+                          <h5 className="card-title justify-content-start d-flex" id="vehicleCardTittle">
+                          <Link to="/login" style={{ color: 'black', textDecoration: 'none' }}>
+                            Coche fantástico
+                          </Link> 
+                          </h5>
+                        <h5 className="card-title justify-content-start d-flex">20.000€</h5>
+                      </div>
+
+                      <div className="d-flex justify-content-end">                
+                     
+                      <Link
+                        id="heartCard"
+                        to="/profile"
+                      >
+                       <script src="https://cdn.lordicon.com/bhenfmcm.js"></script>
+                        <lord-icon
+                            src="https://cdn.lordicon.com/rjzlnunf.json"
+                            trigger="hover"
+                            colors="primary:#1663c7,secondary:#16a9c7"
+                            stroke="80"
                             style={{"width":"50px", "height":"30px"}}>
                         </lord-icon>
                       </Link>
@@ -231,11 +282,10 @@ export const CarouselVehicles = () => {
                       >
                         <script src="https://cdn.lordicon.com/bhenfmcm.js"></script>
                         <lord-icon
-
                             src="https://cdn.lordicon.com/rjzlnunf.json"
                             trigger="hover"
-                            colors={{"primary": "#0d5acb", "secondary":"#08a88a"}}
-                            state="hover-1"
+                            colors="primary:#1663c7,secondary:#16a9c7"
+                            stroke="80"
                             style={{"width":"50px", "height":"30px"}}>
                         </lord-icon>
                       </Link>
@@ -285,67 +335,12 @@ export const CarouselVehicles = () => {
                         to="/profile"
                       >
                         <script src="https://cdn.lordicon.com/bhenfmcm.js"></script>
-                        <lord-icon
-
-                            src="https://cdn.lordicon.com/rjzlnunf.json"
-                            trigger="hover"
-                            colors={{"primary": "#0d5acb", "secondary":"#08a88a"}}
-                            state="hover-1"
-                            style={{"width":"50px", "height":"30px"}}>
-                        </lord-icon>
-                      </Link>
-                      </div>
-                    </div>
-
-                  </div>
-                  
-                </div>
-                <div className="col-12 col-md-4">
-                  <div className="card" style={{width: "18rem"}}>
-                  <div class="flip-card">
-                  <div class="flip-card-inner">
-                    <div class="flip-card-front">
-                    <img src={carImage} className="card-img-top" alt="..."/>
-                    </div>
-                    <div class="flip-card-back">
-                      <Link to="/login" style={{ color: 'white', textDecoration: 'none' }} className="link-hover">
-                      <h3 className="pt-2">Peugeot 507</h3> 
-                      </Link>
-                      <p>Matriculación: 2020</p> 
-                      <p>Cambio: Automático</p>
-                      <p>180.000 km</p>
-                      <p>Ubicación: Migard</p>
-                    </div>
-                  </div>
-                </div>
-                    <div className="d-flex justify-content-end m-2">
-                      <i class="fa-solid fa-star" style={{"color": "#bbc615"}}></i>
-                      <i class="fa-solid fa-star" style={{"color": "#bbc615"}}></i>
-                      <i class="fa-solid fa-star" style={{"color": "#bbc615"}}></i>
-                    </div>
-                    <div className="card-body d-flex justify-content-between">
-                      <div>
-                          <h5 className="card-title justify-content-start d-flex" id="vehicleCardTittle">
-                          <Link to="/login" style={{ color: 'black', textDecoration: 'none' }}>
-                            Coche fantástico
-                          </Link> 
-                          </h5>
-                        <h5 className="card-title justify-content-start d-flex">20.000€</h5>
-                      </div>
-
-                      <div className="d-flex justify-content-end">                
-                     
-                      <Link
-                        id="heartCard"
-                        to="/profile"
-                      >
                         <script src="https://cdn.lordicon.com/bhenfmcm.js"></script>
                         <lord-icon
-
                             src="https://cdn.lordicon.com/rjzlnunf.json"
                             trigger="hover"
-                            colors={{"primary": "#0d5acb", "secondary":"#08a88a"}}
-                            state="hover-1"
+                            colors="primary:#1663c7,secondary:#16a9c7"
+                            stroke="80"
                             style={{"width":"50px", "height":"30px"}}>
                         </lord-icon>
                       </Link>

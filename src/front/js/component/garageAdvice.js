@@ -38,7 +38,11 @@ export const GarageAdvice = () => {
                     <img src={garageImage} className="card-img garageImageLanding d-none d-sm-block d-sm-none d-md-block" alt="..."/>
                     
                     
-                    <h5 className="text-end text-white mt-4 pt-3 pe-3">Consulta nuestros Talleres</h5>            
+                    <h5 className="text-end text-white mt-4 pt-3 pe-3">
+                        <Link to="/garage" className="titleAdviceGarage">
+                            Consulta nuestros Talleres
+                        </Link> 
+                    </h5>            
                     <p className="text-end text-white pt-2 px-3 textGarageLeft d-md-flex" style={{"font-size": "larger"}}> 
                     Tasamos vuestros vehículos como garantía su estado. Las ventas serán más rápidas y las compras serán más seguras así.
                     </p>
@@ -69,7 +73,9 @@ export const GarageAdvice = () => {
 
           
                     <h5 className="text-start text-white pt-3 px-3 mx-3">
-                        ¿Eres un Taller?
+                        <Link to="/login" className="titleAdviceGarage">
+                            ¿Eres un Taller?
+                        </Link>
                     </h5>   
                
                 
