@@ -1,5 +1,4 @@
-import React, {useContext} from "react";
-
+import React, {useContext, useState, useEffect} from "react";
 import { Context } from "../store/appContext";
 import { ThemeContext } from "../layout";
 import "../../styles/index.css";
@@ -11,6 +10,8 @@ export const GarageAdvice = () => {
     
     const {store, actions} = useContext(Context)
     const garageImage = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRFOZ2L1ab7nVYrVxuxVUXMBSokaf-6FWNvug&usqp=CAU"
+    const [isVisible, setIsVisible] = useState(false);
+    
     const toolImage = () => {
         return(
             <>
@@ -28,9 +29,16 @@ export const GarageAdvice = () => {
     }
 
 
+
+
+
+
+
+
+
     return (
     
-      <div className="container mt-5 my-3 d-md-flex justify-content-evenly" >
+      <div className="container mt-5 my-3 d-md-flex justify-content-evenly transitionEffect" >
 
 
             <div className="container mx-2 mb-4 col-5 container-garage">

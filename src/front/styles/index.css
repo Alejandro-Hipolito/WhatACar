@@ -49,6 +49,27 @@
     
 }
 
+div p Link{
+  color: black;
+  text-decoration-line: none;
+}
+
+
+.star {
+
+transition: transform .2s;
+  
+}
+
+.star:hover {
+  -ms-transform: scale(1.5); /* IE 9 */
+  -webkit-transform: scale(1.5); /* Safari 3-8 */
+  transform: scale(1.5); 
+}
+
+
+
+
 
 
 .btn-plus {
@@ -76,6 +97,17 @@
     margin-left: 4px;
   }
   
+
+
+/* GARAGE_ADVICE 
+
+.transitionEffect {
+    opacity: 0;
+    transform: translateX(-50px);
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+  }
+  
+*/
 
 
   .container-garage {
@@ -201,3 +233,24 @@ float: right;
 }
 
 
+
+.search-form {
+  position: relative;
+}
+
+.search-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.search-input {
+  padding-right: 60px; /* Ajusta el valor según sea necesario para evitar solapamiento del texto con el icono */
+}
+
+.search-input + button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+}
