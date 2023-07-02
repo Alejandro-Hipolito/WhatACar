@@ -6,6 +6,7 @@ import { defineElement } from 'lord-icon-element';
 import { useNavigate } from "react-router-dom";
 import { CarouselVehicles } from "../component/carouselVehicles";
 import { GarageAdvice } from "../component/garageAdvice";
+import {Faq} from "../component/faq";
 
 
 
@@ -70,6 +71,8 @@ export const Home = () => {
         <CarouselVehicles />
         <br></br>
         <GarageAdvice />
+        <br></br>
+        <Faq />
 
     </div>
   );
