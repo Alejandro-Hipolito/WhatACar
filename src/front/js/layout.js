@@ -12,6 +12,7 @@ import { Profile_buys} from "./pages/profile_buys"
 import { Profile_reviews } from "./pages/profile_reviews";
 import { Configuration } from "./pages/configuration";
 import { Login } from "./pages/login";
+import { Garage } from "./pages/garage";
 
 import injectContext from "./store/appContext";
 
@@ -61,6 +62,7 @@ const Layout = () => {
                                 <Route element={<Profile_buys />} path="/profile/buys" />
                                 <Route element={<Profile_reviews />} path="/profile/reviews" />
                                 <Route element={<Configuration />} path="/configuration" />
+                                <Route element={<Garage />} path="/garage" />
                                 <Route element={<Single />} path="/single/:theid" />
                                 <Route element={<h1>Not found!</h1>} />
                             </Routes>
