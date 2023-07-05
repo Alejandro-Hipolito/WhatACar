@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Link, useParams } from "react-router-dom";
 import { Context } from "../store/appContext";
-import "/workspaces/Watacar_v2/src/front/styles/configuration.css"
+import "/workspaces/Watacar_v2/src/front/styles/garage.css"
 
 export const Garage = () => {
     const params = useParams();
