@@ -79,6 +79,14 @@ export const Home = () => {
           </div>
           {
             !isFilter ? <>
+            <div className="container-fluid ">
+            <h3 className="my-3">"
+              Más que una plataforma de compraventa. 
+              Más que reestrenar una moto. 
+              WhataCar te facilita moverte hacia los tuyos.
+            </h3>
+            </div>
+            <br></br>
               <CarouselVehicles />
               <br></br>
               <br></br>
