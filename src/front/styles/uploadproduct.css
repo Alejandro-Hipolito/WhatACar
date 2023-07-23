@@ -296,5 +296,6 @@
     background-color: #63B1D0;
   }
 
-
-
+.accordion{
+  background-color: white!important;
+}

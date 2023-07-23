@@ -46,7 +46,7 @@ def upload_car():
     
     
     data = request.get_json()
-    print(data)
+    #print(data)
     user = User.query.get(current_user)
 
     name = data.get('name')
@@ -122,7 +122,7 @@ def upload_car():
 
 
 @api.route('/search-by/<filter>', methods=['GET'])
-def search_by_filter(filter):
+def search_by_filters(filter):
     
     brand_id = request.args.get('brand_id')  
     vehicle_type = request.args.get('vehicle_type')  
@@ -324,7 +324,7 @@ def obtener_brands():
     for brand in brands:
         brand_data = brand.serialize()
         brand_list.append(brand_data)
-
+    #print(brand_list)
     return jsonify(brand_list)
 
 

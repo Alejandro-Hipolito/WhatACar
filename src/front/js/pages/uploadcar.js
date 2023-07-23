@@ -33,6 +33,7 @@ const getBrands = () => {
   .then(resp => resp.json())
   .then(data => {
     setCarBrands(data)
+    console.log(data)
   })
   .catch(err => console.error(err))
 }

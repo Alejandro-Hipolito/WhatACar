@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 const UserInfo = ({ userName, email, address, phone }) => {
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
 
   const toggleAccordion = () => {
     setIsOpen(!isOpen);

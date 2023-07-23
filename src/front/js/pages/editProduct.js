@@ -10,6 +10,10 @@ export const EditProduct = () => {
   const navigate = useNavigate();
   const { store } = useContext(Context);
 
+  const [selectedImageId, setSelectedImageId] = useState(null); 
+  const [selectedImageIds, setSelectedImageIds] = useState([]); 
+
+
   const [carBrands, setCarBrands] = useState([]);
   const [carModels, setCarModels] = useState([]);
   const [selectedBrand, setSelectedBrand] = useState("");
@@ -38,11 +42,17 @@ export const EditProduct = () => {
       });
   }, [productid]);
 
-  const handleDeleteImage = (imageId) => {
-    const updatedImages = selectedData.images.filter((image) => image.id !== imageId);
-    setSelectedData({ ...selectedData, images: updatedImages });
+  const handleDeleteImage = (imageId, e) => {
+    e.preventDefault();
 
-    
+    const isSelected = selectedImageIds.includes(imageId);
+
+    if (isSelected) {
+      setSelectedImageIds(selectedImageIds.filter((id) => id !== imageId));
+    } else {
+
+      setSelectedImageIds([...selectedImageIds, imageId]);
+    }
   };
 
   const handleFileChange = (ev) => {
@@ -88,7 +98,6 @@ export const EditProduct = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
   
-    // Upload selected images to Cloudinary
     Promise.all(
       selectedImages.map((file) => {
         const formData = new FormData();
@@ -118,7 +127,6 @@ export const EditProduct = () => {
         // Remove null values from fileURLs in case of any upload errors
         const filteredFileURLs = fileURLs.filter((url) => url !== null);
   
-        // Update the product data with the image URLs
         const updatedData = {
           ...selectedData,
           brand_id: selectedBrand,
@@ -126,7 +134,6 @@ export const EditProduct = () => {
           images: filteredFileURLs,
         };
   
-        // Make the PUT request to update the product data
         const putConfig = {
           method: "PUT",
           body: JSON.stringify(updatedData),
@@ -155,23 +162,25 @@ export const EditProduct = () => {
         console.error("Error uploading images to Cloudinary:", error);
       });
 
-      const deleteConfig = {
-        method: "DELETE",
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
-        },
-      };
-  
-      fetch(process.env.BACKEND_URL + `api/delete-image/${imageId}`, deleteConfig)
-        .then((resp) => {
-          if (!resp.ok) {
-            throw new Error("Error al eliminar la imagen del servidor");
-          }
-        })
-        .catch((err) => {
-          console.error(err);
-        });
-  };
+       selectedImageIds.forEach((imageId) => {
+    const deleteConfig = {
+      method: "DELETE",
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+    };
+
+    fetch(process.env.BACKEND_URL + `api/delete-image/${imageId}`, deleteConfig)
+      .then((resp) => {
+        if (!resp.ok) {
+          throw new Error("Error al eliminar la imagen del servidor");
+        }
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  });
+};
   
   
   
@@ -333,12 +342,16 @@ export const EditProduct = () => {
               </div>
 
               <div>
-              {selectedData.images.map((image, index) => (
-                <div key={index}>
-                  <img style={{ width: '4rem', height: '5rem' }} src={image.image} alt={`Image ${image.id}`} />
-                  <button onClick={() => handleDeleteImage(image.id)}>Delete</button>
-                </div>
+              {selectedData.images.map((image) => (
+                !selectedImageIds.includes(image.id) && (
+                  <div key={image.id}>
+                    <img style={{ width: '4rem', height: '5rem' }} src={image.image} alt={`Image ${image.id}`} />
+                    <button onClick={(e) => handleDeleteImage(image.id, e)}>Delete</button>
+                  </div>
+                )
               ))}
+
+
 
               <input type="file" onChange={handleFileChange} multiple />
 
