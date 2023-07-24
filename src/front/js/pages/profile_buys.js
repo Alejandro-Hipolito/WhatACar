@@ -3,7 +3,7 @@ import { Context } from "../store/appContext";
 import { Profile_navbar } from "../component/profile_navbar";
 import "/workspaces/Watacar_v2/src/front/styles/profile.css"
 import { Purchase_navbar } from "../component/purchase_navbar";
-import { Toaster, toast } from 'sonner'
+
 
 
 export const Profile_buys = () => {
