@@ -16,7 +16,6 @@ import { Configuration } from "./pages/configuration";
 import { Login } from "./pages/login";
 import { On_sale } from "./pages/onSale";
 
-
 import injectContext from "./store/appContext";
 
 import { Navbar } from "./component/navbar";
