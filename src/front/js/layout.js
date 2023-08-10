@@ -4,6 +4,7 @@ import ScrollToTop from "./component/scrollToTop";
 import { BackendURL } from "./component/backendURL";
 
 import { Home } from "./pages/home";
+import { HomeGripProducts } from "./pages/homeGripProducts";
 import { Demo } from "./pages/demo";
 import { Single } from "./pages/single";
 import { Profile_configuration } from "./pages/profile_configuration";
@@ -71,6 +72,7 @@ const Layout = () => {
                             
                             <Routes>
                                 <Route element={<Home />} path="/" />
+                                <Route element={<HomeGripProducts />} path="/view" />
                                 <Route element={<Demo />} path="/demo" />
                                 <Route element={<Login />} path="/login" />
                                 <Route element={<Signup />} path="/signup" />
