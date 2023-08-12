@@ -1,4 +1,4 @@
-import React, {useContext, useEffect, useState} from "react";
+import React, {useContext, useEffect} from "react";
 import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
 import { ThemeContext } from "../layout";
@@ -8,32 +8,49 @@ import { defineElement } from 'lord-icon-element';
 import { Filters } from "./filters";
 import "/workspaces/Watacar_v2/src/front/styles/index.css";
 import { Placeholder_carousel } from "../pages/placeholder_carousel";
+import { Favoritebtn } from "/workspaces/Watacar_v2/src/front/js/component/favoritebtn.js";
 
 
 
 export const CarouselCars = () => {
   defineElement(lottie.loadAnimation);
   const { store, actions } = useContext(Context);
-  const [favoriteIcon, setFavoriteIcon] = useState('fa-regular')
   const carImage = "https://images.coches.com/_vn_/kia/Sportage/c399cf1d98a95d24f8e8715dd0b13fb2.jpg?p=cc_vn_high"
   const navigate = useNavigate();
 
-  const handleFavoriteButton = () => {
-    setFavoriteIcon('fa-solid')
-    Swal.fire({
-      icon: 'success',
-      title: 'Agregado a favoritos',
-     
-    })
-  }
   useEffect(() => {
     actions.getFilteredCars();
+    // actions.getFavorites(); 
+
   }, []);
 
-  const selectFavoriteVehicle = (user_id, product_id) => {
-    actions.postFavorite(user_id, product_id);
-    handleFavoriteButton();
+
+
+  const selectFavoriteVehicle = async (user_id, product_id) => {
+    const isProductFavorited = store.favorites.some(
+      (favorite) => favorite.product_id === product_id
+    );
+
+    if (!isProductFavorited) {
+      try {
+        // ... (código anterior)
+        const updatedFavorites = [...store.favorites, data];
+        setStore({ favorites: updatedFavorites });
+
+        // Actualizar el estado del vehículo seleccionado
+        setVehicles((prevVehicles) =>
+          prevVehicles.map((vehicle) =>
+            vehicle.id === product_id
+              ? { ...vehicle, isFavorited: true }
+              : vehicle
+          )
+        );
+      } catch (error) {
+        console.error("Error:", error);
+      }
+    }
   };
+
   return (
     <div className="d-flex overflow-auto my-5 ">
     {store.filteredCars.length > 0 ? (
@@ -79,16 +96,10 @@ export const CarouselCars = () => {
                       {vehicle.user_full_name}
                     </span>
                   </p>
-                </div>
+                </div> 
                 <div className="d-flex justify-content-end">
-                  <Link
-                    id="heartCard"
-                    to=""
-                    onClick={() => selectFavoriteVehicle(store.user.id, vehicle.id)}
-                  >
-                    <script src="https://cdn.lordicon.com/bhenfmcm.js"></script>
-                    <i className={`${favoriteIcon} fa-heart`} style={{"color": "#2e6ad1"}}></i>
-                  </Link>
+                  <Favoritebtn vehicle={vehicle} />
+
                 </div>
               </div>
             </div>

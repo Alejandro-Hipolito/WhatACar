@@ -151,7 +151,7 @@ export const SingleProduct = () => {
                         
                     </div>
 
-                      <div className='row d-flex justify-content center m-auto my-4'>
+                      <div className='row d-flex justify-content center m-auto my-4 me-2'>
                         <div className='col-lg-12 justify-content-center m-auto d-flex'>
                           
                           <UserInfo userName={product.user.full_name} email={product.user.email} address={product.user.address} phone={product.user.phone} />

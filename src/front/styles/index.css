@@ -381,3 +381,35 @@ div ul li {
     }
   }
   
+
+  .favbtn{
+    font-size: 2rem;
+    background: none;
+    max-height: 52% ;
+    border-radius: .5rem;
+    border: 2px solid #2486c7;
+    color: #2486c7;
+
+  }
+
+  .crackheart{
+    font-size: 1.6rem;
+    align-items: center;
+    margin-top: 5px;
+  }
+
+  .crackbtn:hover{
+    color: red;
+  }
+
+.crackbtn{
+  display: flex;
+  justify-content: center;
+  margin-left: .5rem;
+  border-radius: 5px;
+  height: 2.5rem!important;
+  width: 100%!important;
+  border: 2px solid #2486c7;
+  
+
+}

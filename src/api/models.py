@@ -30,13 +30,13 @@ class User_role(Enum): #Solo se pueden usar los roles que pongamos aquí
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     full_name = db.Column(db.String(100), nullable=False)
-    email = db.Column(db.String(80), unique=True, nullable=False)
+    email =  db.Column(db.String(80), unique=True, nullable=False)
     password = db.Column(db.String(80), unique=False, nullable=False)
-    document_type = db.Column(db.Enum(IdDocument), nullable=False, default=IdDocument.DNI)
-    document_number = db.Column(db.String(10), unique=True, nullable=False)
+    document_type = db.Column(db.Enum(IdDocument), nullable=True, default=IdDocument.DNI)
+    document_number = db.Column(db.String(10), unique=True, nullable=True)
     address = db.Column(db.String(120), nullable=True) 
     role = db.Column(db.Enum(User_role), nullable=False, default=User_role.COMMON_USER)
-    phone = db.Column(db.Integer, nullable=False) 
+    phone = db.Column(db.Integer, nullable=True) 
     avatar = db.Column(db.String(200))
     #is_active = db.Column(db.Boolean(), unique=False, nullable=False)
 
@@ -65,7 +65,8 @@ class User(db.Model):
             "document_number": self.document_number,
             "address": self.address, 
             "role": self.role.value,
-            "phone": self.phone
+            "phone": self.phone,
+            "avatar": self.avatar
             
             # do not serialize the password, its a security breach
         }
@@ -99,7 +100,7 @@ class ProductState(Enum):
 class fuel_type(Enum):
     DIESEL = 'Diesel'
     GASOLINA = 'Gasolina'
-    HIBRIDO = 'Híbrido'
+    HIBRIDO = 'Hibrido'
     ELECTRICO = 'Eléctrico'
 
 class product_type(Enum):
@@ -181,7 +182,9 @@ class Garage (db.Model):
     address = db.Column(db.String(50), nullable=False)
     description = db.Column(db.String(200), nullable=False)
     cif = db.Column(db.String(10), nullable=False)
-    image_id = db.Column(db.Integer, db.ForeignKey('image.id')) 
+    avatar = db.Column(db.String(200))
+
+    # avatar = db.Column(db.Integer, db.ForeignKey('image.id')) 
     product_id = db.Column(db.Integer, db.ForeignKey('product.id'))
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
 
@@ -200,7 +203,7 @@ class Garage (db.Model):
             "address": self.address,
             "description": self.description,
             "cif": self.cif,
-            "image_id": self.image_id,
+            "avatar": self.avatar,
             "product_id": self.product_id,
             "user_id": self.user_id
         }

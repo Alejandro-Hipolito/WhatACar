@@ -8,6 +8,7 @@ import { defineElement } from 'lord-icon-element';
 import { Filters } from "./filters";
 import "/workspaces/Watacar_v2/src/front/styles/index.css";
 import { Placeholder_carousel } from "../pages/placeholder_carousel";
+ import { Favoritebtn } from "/workspaces/Watacar_v2/src/front/js/component/favoritebtn.js";
 
 
 
@@ -18,20 +19,19 @@ export const CarouselPrice = () => {
   const carImage = "https://images.coches.com/_vn_/kia/Sportage/c399cf1d98a95d24f8e8715dd0b13fb2.jpg?p=cc_vn_high"
   const navigate = useNavigate();
 
-  const handleFavoriteButton = () => {
-    setFavoriteIcon('fa-solid')
+  // const handleFavoriteButton = () => {
+  //   setFavoriteIcon('fa-solid')
 
-  }
+  // }
 
 
   useEffect(() => {
     actions.getFilteredPrice();
+    // actions.getFavorites(); 
+
   }, []);
 
-  const selectFavoriteVehicle = (user_id, product_id) => {
-    actions.postFavorite(user_id, product_id);
-    handleFavoriteButton();
-  };
+
 
   return (
     <div className="d-flex overflow-auto my-5 ">
@@ -80,14 +80,15 @@ export const CarouselPrice = () => {
                   </p>
                 </div>
                 <div className="d-flex justify-content-end">
-                  <Link
+                  <Favoritebtn vehicle={vehicle} />
+                  {/* <Link
                     id="heartCard"
                     to=""
                     onClick={() => selectFavoriteVehicle(store.user.id, vehicle.id)}
                   >
                     <script src="https://cdn.lordicon.com/bhenfmcm.js"></script>
                     <i className={`${favoriteIcon} fa-heart`} style={{"color": "#2e6ad1"}}></i>
-                  </Link>
+                  </Link> */}
                 </div>
               </div>
             </div>

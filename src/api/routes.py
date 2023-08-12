@@ -751,6 +751,7 @@ def update_configuration():
     document_number = data.get('document_number')
     address = data.get('address')
     phone = data.get('phone')
+    avatar = data.get('avatar')
 
     if full_name:
         user.full_name = full_name
@@ -764,6 +765,8 @@ def update_configuration():
         user.address = address
     if phone:
         user.phone = phone
+    if avatar:
+        user.avatar = avatar
 
     try:
         db.session.commit()
@@ -792,7 +795,7 @@ def update_garage_configuration():
     garage.address = data.get('address')
     garage.description = data.get('description')
     garage.cif = data.get('cif')
-    garage.image_id = data.get('image_id')
+    garage.avatar = data.get('avatar')
     garage.product_id = data.get('product_id')
     garage.user_id = data.get('user_id')
     print(garage.serialize())
@@ -803,6 +806,24 @@ def update_garage_configuration():
     except Exception as e:
         db.session.rollback()
         return jsonify({"message": Exception}), 500
+
+@api.route('/configuration/garage', methods=['DELETE'])
+@jwt_required()
+def delete_garage(garage_id):
+    current_user = get_jwt_identity()
+
+    garage = Garage.query.get(garage_id)
+
+    if garage is None:
+        return jsonify({"msg" : "Garage not found"}), 404
+    
+    if garage.user_id != current_user:
+        return jsonify({"msg" : "Auth required."})
+    
+    db.session.delete(garage)
+    db.session.commit()
+
+    return jsonify({"msg" : "Garage successfully deleted!"}), 200
 
 
 
@@ -849,13 +870,15 @@ def signup():
     full_name = data.get('full_name')
     email = data.get('email')
     password = data.get('password')
-    document_type = data.get('document_type')
-    document_number = data.get('document_number')
-    address = data.get('address')
     role = data.get('role')
-    phone = data.get('phone')
+    # document_type = data.get('document_type')
+    # document_number = data.get('document_number')
+    # address = data.get('address')
+    # phone = data.get('phone')
 
-    register = User(full_name = full_name, email=email, password=password, document_type=document_type, document_number=document_number, address=address, role=role, phone=phone)
+    register = User(full_name = full_name, email=email, password=password, role=role)
+    # register = User(full_name = full_name, email=email, password=password, document_type=document_type, document_number=document_number, address=address, role=role, phone=phone)
+
     print(register)
 
     if register is None:
@@ -901,11 +924,16 @@ def saveFavorites():
     if not producto:
         return jsonify({"mensaje": "Producto no encontrado"}), 404
 
+    existing_favorite = Favorites.query.filter_by(user_id=usuario.id, product_id=producto.id).first()
+    if existing_favorite:
+        return jsonify({"mensaje": "El producto ya está en la lista de favoritos"}), 400
+
     favorite = Favorites(user_id=usuario.id, product_id=producto.id)
     db.session.add(favorite)
     db.session.commit()
 
     return jsonify({"mensaje": "Producto guardado como favorito"}), 200
+
 
 @api.route('/profile/favorites', methods=['GET'])
 @jwt_required()
@@ -1022,7 +1050,7 @@ def getMyGarage():
         "address": garage.address,
         "description": garage.description,
         "cif": garage.cif,
-        "image_id": garage.image_id,
+        "avatar": garage.avatar,
         "product_id": garage.product_id,
         "user_id": garage.user_id
     }
@@ -1048,7 +1076,7 @@ def getGarages():
             "address": garage.address,
             "description": garage.description,
             "cif": garage.cif,
-            "image_id": garage.image_id,
+            "avatar": garage.avatar,
             "product_id": garage.product_id,
             "user_id": garage.user_id
         }
@@ -1076,7 +1104,7 @@ def createGarage():
         address = data.get('address')
         web = data.get('web')
         description = data.get('description')
-        image_id = data.get('image_id')
+        avatar = data.get('avatar')
         user_id = data.get('user_id')
 
         if not all([name, mail, phone, address, cif]):
@@ -1091,7 +1119,7 @@ def createGarage():
             address=address,
             description=description,
             web=web,
-            image_id=image_id,
+            avatar=avatar,
             user_id=current_user
         )
         print(new_garage.serialize())

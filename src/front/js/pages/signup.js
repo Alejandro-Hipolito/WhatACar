@@ -50,12 +50,13 @@ export const Signup = () => {
   return (
     <>
       <div className="container col-12 my-5 justify-content-center ">
-        <div className="box my-5 ">
-          <h2 className="text-center mt-2 pt-3">Únete a WhataCar</h2>
+        <div className="signupbox my-5 ">
+          <h2 className="text-center mt-4 pt-3">Únete a WhataCar</h2>
 
           <form onSubmit={handleSubmit} method="POST">
-            <div className="row mx-1 justify-content-around text-center">
-              <div className="col-xs-10 col-sm-10 col-md-10 col-lg-5 ">
+            <div className="centercontent">
+            <div className="row mx-1 justify-content-around text-center mb-4">
+              <div className="col-xs-10 col-sm-10 col-md-10 col-lg-10 ">
                 <div className="input-box">
                   <label className="form-floating" htmlFor="full_name">Nombre y apellidos
                   {""} <i className="input-with-icon2 fa-solid fa-user"></i></label>
@@ -65,18 +66,20 @@ export const Signup = () => {
                 </div>
               </div>
 
-              <div className="col-xs-10 col-sm-10 col-md-10 col-lg-5  ">
+            <div className="row  mx-1  justify-content-around text-center mt-4 ">
+              <div className="col-xs-10 col-sm-10 col-md-10 col-lg-10  "> 
                 <div className="input-box">
-                  <label className="form-floating me-4" htmlFor="email">Email <FontAwesomeIcon className="input-with-icon2"icon={faEnvelope} /></label>
+                  <label className="form-floating " htmlFor="email">Email <FontAwesomeIcon className="input-with-icon2"icon={faEnvelope} /></label>
                   <div>
                     <input type="email" placeholder="email@example.com" name="email" onChange={handleChange} />
                   </div>
                 </div>
               </div>
             </div>
+            </div>
 
-            <div className="row  mx-1  justify-content-around text-center ">
-              <div className="col-xs-10 col-sm-10 col-md-10 col-lg-5 ">
+            <div className="row  mx-1  justify-content-around text-center mt-4">
+              <div className="col-xs-10 col-sm-10 col-md-10 col-lg-10 ">
                 <div className="input-box">
                   <label className="form-floating" htmlFor="password"> Contraseña {""} 
                   <i className="input-with-icon2 fa-solid fa-lock"></i>  </label>
@@ -98,18 +101,11 @@ export const Signup = () => {
                 </div>
               </div>
 
-              <div className="col-xs-10 col-sm-10 col-md-10 col-lg-5 ">
-                <div className="input-box">
-                  <label className="form-floating" htmlFor="phone">Teléfono{""} <i className="input-with-icon2 fa-solid fa-phone"></i></label>
-                  <div>
-                    <input type="number" placeholder="696231829" name="phone" onChange={handleChange} />
-                  </div>
-                </div>
-              </div>
+              
             </div>
 
-            <div className="row mx-1 justify-content-around text-center">
-              <div className="col-xs-12 col-sm-10 col-md-10 col-lg-5 ">
+            <div className="row mx-1 justify-content-around text-center mb-5">
+              <div className="col-xs-12 col-sm-10 col-md-10 col-lg-10 ">
                 <div className="labelbox">
                   <label className="form-floating" htmlFor="role">Rol Usuario
                   {""} <i className="input-with-icon2 fa-solid fa-screwdriver-wrench"></i></label>
@@ -122,47 +118,17 @@ export const Signup = () => {
                 </div>
               </div>
 
-              <div className="col-xs-10 col-sm-10 col-md-10 col-lg-5">
-                <div className="input-box">
-
-                  <label className="form-floating" htmlFor="address">Dirección {""} <i className="input-with-icon2 fa-solid fa-map-location"></i></label>
-                  <div>
-                    <input type="text" placeholder="Av. del corral 7" id="address" name="address" onChange={handleChange} />
-                  </div>
-                </div>
-
-              </div>
+              
             </div>
-
-            <div className="row mx-1 justify-content-around text-center">
-              <div className="col-xs-10 col-sm-10 col-md-10 col-lg-5 mx-1">
-                <div className="labelbox">
-                  <label className="form-floating" htmlFor="document_type">Tipo de documento
-                  {""} <i className="input-with-icon2 fa-solid fa-square-check"></i></label>
-                  <div>
-                    <select id="idDocument" name="document_type" onChange={handleChange}>
-                      <option value="DNI">DNI</option>
-                      <option value="CIF">CIF</option>
-                    </select>
-                  </div>
-                </div>
-              </div>
-
-              <div className="col-xs-12 col-sm-4 col-md-10 col-lg-5 mb-5">
-                <div className="input-box">
-                  <label className="form-floating" htmlFor="document_number">Número de documento {""} 
-                  <i className="input-with-icon2 fa-solid fa-id-card"></i></label>
-                  <div>
-                    <input type="text" id="idNumber" placeholder="123412312H" name="document_number" onChange={handleChange} />
-                  </div>
-                </div>
-              </div>
             </div>
+            
+
+            
 
             <h6 className="text-center mt-5">
               <strong>* Todos los campos deben ser rellenados</strong>
             </h6>
-            <div className="button mt-5 py-5">
+            <div className="button  py-5">
               <button className="btn btn-primary btn1">Registrar Usuario</button>
             </div>
           </form>

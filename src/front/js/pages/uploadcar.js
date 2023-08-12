@@ -74,13 +74,11 @@ useEffect(() => {
 
     const dropzone = e.target.closest('.dropzone');
     const input = dropzone.querySelector('input');
-    if (selectedImages.length < MAX_IMAGES) {
-      input.disabled = false;
+
 
     if (selectedImages.length === 0) {
       setHasSelectedImages(false);
     }
-  };
 }
 
 

@@ -18,9 +18,15 @@ export const Favorites = () => {
     }, [])
 
     const handleRemoveFavorite = (product_id) => {
-      actions.putFavorite(product_id)
-      window.location.reload();
-      };
+      actions.putFavorite(product_id);
+    
+      setTimeout(() => {
+        navigate('/profile/favorites')
+        window.location.reload();
+
+      }, 100); 
+    };
+    
 
     return store.favorites ?(
         <>
@@ -46,31 +52,33 @@ export const Favorites = () => {
                             </div>
                             <div className="product_description_profile_favorites">
                               <div className="row d-flex justify-content-between">
-                                  <h6 className="col-8 price_product_profile">
+                                  <h6 style={{color: 'black'}} className="col-8 price_product_profile">
                                     {favorites.price}
                                     <i class="fa-solid fa-euro-sign"></i>
                                   </h6>
                                   <div className="col-4 d-flex justify-content-end">
-                                    <button
-                                      className="button_favorite_favorites btnFavorite mt-1 "
-                                      id="heartCard"
+                                    
+                                  </div>
+                                </div>
+                              <div className="row limit-text">
+                                  <h6 style={{color: 'black'}}>{favorites.name}</h6>
+                              </div>
+                              <button
+                                      className="crackbtn mt-1 "
                                       onClick={() => handleRemoveFavorite(favorites.product_id)}
                                     >
-                                    <script src="https://cdn.lordicon.com/bhenfmcm.js"></script>
+                                      <i className="fa-solid fa-heart-crack crackheart"></i>
+                                    {/* <script src="https://cdn.lordicon.com/bhenfmcm.js"></script>
                                       <lord-icon
+                                      
                                           className='lordicon'
                                           src="https://cdn.lordicon.com/rjzlnunf.json"
                                           trigger="morph"
                                           colors="primary:#1663c7,secondary:#16a9c7"
                                           state="morph-heart-broken"
-                                          style={{"width":"20px","height":"30px", }}>
-                                      </lord-icon>
+                                          style={{"width":"20px","height":"30px", "color": "black" }}>
+                                      </lord-icon> */}
                                     </button>
-                                  </div>
-                                </div>
-                              <div className="row limit-text">
-                                  <h6>{favorites.name}</h6>
-                              </div>
                             </div>
                             </NavLink>
                         </div>

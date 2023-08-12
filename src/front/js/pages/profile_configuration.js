@@ -12,6 +12,9 @@ export const Profile_configuration = () => {
   const [eye2, setEye2] = useState(true);
   const [data, setData] = useState([]);
   const [successMessage, setSuccessMessage] = useState("");
+  // const [selectedImg, setSelectedImg] = useState({
+
+  // })
   /*useEffect(() => {
     actions.getUser();
     // Add event listener for "Enter" key when the modal is shown
@@ -110,10 +113,11 @@ export const Profile_configuration = () => {
       <Profile_navbar />
       <div className="container_profile mx-4">
         <div className="mx-5 px-5 box w-100">
+          {console.log(store.user)}
         <div className="d-lg-flex justify-content-start my-5">
           <img
             className="avatar_image"
-            src="https://appsdejoseluis.com/wp-content/uploads/2020/04/face_co.png"
+            src={store.user.avatar !== null ?  store.user.avatar : "https:/c/appsdejoseluis.com/wp-content/uploads/2020/04/face_co.png"}
             alt="Avatar"
           />
         </div>

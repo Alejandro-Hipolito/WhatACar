@@ -11,6 +11,9 @@ export const UploadMoto = () => {
   const [motoBrands, setMotoBrands] = useState([])
   const [motoModels, setMotoModels] = useState([])
   const [selectedModel, setSelectedModel] = useState("");
+
+  const MAX_IMAGES = 5;
+
  
   
   const [image, setImage] = useState({array : {}})
@@ -90,12 +93,11 @@ useEffect(() => {
     );
     const dropzone = e.target.closest('.dropzone');
     const input = dropzone.querySelector('input');
-    if (selectedImages.length < MAX_IMAGES) {
-      input.disabled = false;
+
     if (selectedImages.length === 0) {
       setHasSelectedImages(false);
     }
-  };
+
 }
   
  

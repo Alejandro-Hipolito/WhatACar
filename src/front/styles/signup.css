@@ -9,15 +9,40 @@ input{
 
 
 
-.box{
+.signupbox{
    
+    -webkit-border-radius: 63px;
+    border-radius: 10px;
+    background: #ffffff;
+    box-shadow: -11px 11px 15px #969caa, 11px 11px 15px #969caa;
+    width: 30rem;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    margin:auto;
+    
+
+}
+
+.box{  
     -webkit-border-radius: 63px;
     border-radius: 10px;
     background: #D1D8EC;
     box-shadow: -11px 11px 15px #969caa, 11px 11px 15px #969caa;
-    
 
 }
+
+
+
+.centercontent{
+    margin-top: 3rem;
+}
+
+.centerinput{
+    margin-bottom: 2rem;
+}
+
+
 
 h2 {
     font-weight: bold;
@@ -28,12 +53,6 @@ label {
 
 font-weight: bold;
 
-}
-.input-box{
-    
-    
-    margin-top: 1.5rem;
- 
 }
 
 

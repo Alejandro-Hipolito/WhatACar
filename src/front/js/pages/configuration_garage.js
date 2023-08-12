@@ -8,6 +8,8 @@ export const Configuration_Garage = () => {
     const params = useParams();
     const {actions, store} = useContext(Context);
     const [data, setData] = useState(store.garage);
+    const [showFileInput, setShowFileInput] = useState(false); 
+
     const navigate =useNavigate();
 
     useEffect (() => {
@@ -56,7 +58,7 @@ const handleSubmit = (event) => {
             "address": data.address,
             "description": data.description,
             "cif": data.cif,
-            "image_id": data.image_id,
+            "avatar": data.avatar,
             "product_id": data.product_id,
             "user_id": data.user_id
 
@@ -84,6 +86,39 @@ const handleSubmit = (event) => {
     })
 };
 
+
+  
+const handleAvatar = async (e) => {
+    const file = e.target.files[0]
+    if (!file) return ;
+  
+    const formData = new FormData()
+    formData.append("file", file);
+    formData.append("upload_preset", "WhataCar");
+    formData.append("api_key", process.env.API_KEY);
+    formData.append("timestamp", Math.floor(Date.now() / 1000));
+  
+
+    try {
+      const response = await fetch(
+        "https://api.cloudinary.com/v1_1/djpzj47gu/image/upload",
+        {
+          method: "POST",
+          body: formData,
+        }
+      );
+      const data = await response.json();
+  
+      setData((prevData) => ({
+        ...prevData,
+        avatar: data.secure_url,
+      }));
+    } catch (error) {
+      console.error("Error uploading avatar:", error);
+    }
+  };
+
+
 return store.garage ? (
     <>
 <Profile_navbar />
@@ -100,7 +135,14 @@ return store.garage ? (
 
             <div className="container">
                 <div className="avatar_container pb-4">
-                    <img src="https://neomotor.epe.es/binrepository/990x619/0c62/990d557/none/2594535/UHEL/elegir-taller-confianza-1_285-37667622_20221031082702.jpg" alt="Avatar" className="avatar_image" />
+                    <img src={store.garage.avatar !== null ? store.garage.avatar : "https://neomotor.epe.es/binrepository/990x619/0c62/990d557/none/2594535/UHEL/elegir-taller-confianza-1_285-37667622_20221031082702.jpg"} alt="Avatar" className="avatar_image" />
+                    {/* <img src="https://neomotor.epe.es/binrepository/990x619/0c62/990d557/none/2594535/UHEL/elegir-taller-confianza-1_285-37667622_20221031082702.jpg" alt="Avatar" className="avatar_image" /> */}
+
+                <button className="btn_pencil_avatar" onClick={() => setShowFileInput(true)}>✏️</button>
+                    {showFileInput && ( // Mostrar el input solo si showFileInput es true
+                        <input className="profileimginput" type="file" onChange={handleAvatar} placeholder="Elije la foto"></input>
+                    )}
+
                 </div>
                 
                 <div className="profile_info">
@@ -108,6 +150,7 @@ return store.garage ? (
                         <div>
                         <label className="my-2 col-10 col-sm-10 col-md-6 col-lg-5 label p-2 input-radius">Nombre del Taller:</label>
                         </div>
+                        {console.log(store.garage)}
                         <input className="col-12  user_data" name="name" type="text" value={data.name || store.garage.name} onChange={handleChange}></input>
                     </div>
                     <div className="row  my-4">
