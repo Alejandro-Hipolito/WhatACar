@@ -8,6 +8,8 @@ import { Placeholder_profile } from "./placeholder_profile.js"
 export const Configuration = () => {
     const {actions, store} = useContext(Context);
     const [data, setData] = useState([]);
+    const [showFileInput, setShowFileInput] = useState(false); 
+
     const navigate =useNavigate();
 useEffect (() => {
     actions.getUser();
@@ -49,7 +51,8 @@ const handleSubmit = (event) => {
             "document_type": updatedData.document_type,
             "document_number": updatedData.document_number,
             "full_name": updatedData.full_name,
-            "phone": updatedData.phone
+            "phone": updatedData.phone,
+            avatar: updatedData.avatar,
         }),
         headers: {
             'Content-Type': 'application/json',
@@ -75,16 +78,73 @@ const handleSubmit = (event) => {
       console.error(error);
     });
 };
+
+const handleAvatar = async (e) => {
+  const file = e.target.files[0]
+  if (!file) return ;
+
+  const formData = new FormData()
+  formData.append("file", file);
+  formData.append("upload_preset", "WhataCar");
+  formData.append("api_key", process.env.API_KEY);
+  formData.append("timestamp", Math.floor(Date.now() / 1000));
+
+
+  
+  // return fetch(
+  //     "https://api.cloudinary.com/v1_1/djpzj47gu/image/upload",
+  //     {
+  //       method: "POST",
+  //       body: formData,
+  //     }
+  //   )
+  //   .then((resp) => resp.json())
+  //   .then((data) => {
+  //     console.log("Avatar updated", data)
+  //     return avatar= data.secure_url
+  //   })
+
+  try {
+    const response = await fetch(
+      "https://api.cloudinary.com/v1_1/djpzj47gu/image/upload",
+      {
+        method: "POST",
+        body: formData,
+      }
+    );
+    const data = await response.json();
+
+    setData((prevData) => ({
+      ...prevData,
+      avatar: data.secure_url,
+    }));
+  } catch (error) {
+    console.error("Error uploading avatar:", error);
+  }
+};
+
+
 return store.user ? (
   <div className="container_profile">
         <div className="mx-5 px-5 box w-100">
         <div className="d-lg-flex justify-content-start my-5">
+        <div className="avatar_container">
+          {console.log(store.user.avatar)}
           <img
             className="avatar_image"
-            src="https://appsdejoseluis.com/wp-content/uploads/2020/04/face_co.png"
+            src={store.user.avatar || "https:/c/appsdejoseluis.com/wp-content/uploads/2020/04/face_co.png"}
+            // src={store.user.avatar !== null ?  store.user.avatar : "https:/c/appsdejoseluis.com/wp-content/uploads/2020/04/face_co.png"}
+            // src={store.user.avatar || "https://appsdejoseluis.com/wp-content/uploads/2020/04/face_co.png"}
+
             alt="Avatar"
           />
         </div>
+        <button className="btn_pencil_avatar" onClick={() => setShowFileInput(true)}>✏️</button>
+          {showFileInput && ( // Mostrar el input solo si showFileInput es true
+            <input className="profileimginput" type="file" onChange={handleAvatar} placeholder="Elije la foto"></input>
+          )}
+        </div>
+
         <div className="profile_info m-auto pb-5">
           <div className="row_profile_configuration">
                         <label className=" text-wrap badge label col-sm-10 col-md-6 col-lg-8 m-3">Nombre:</label>

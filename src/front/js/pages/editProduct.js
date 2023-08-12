@@ -105,7 +105,6 @@ export const EditProduct = () => {
       })
     )
       .then((fileURLs) => {
-        // Remove null values from fileURLs in case of any upload errors
         const filteredFileURLs = fileURLs.filter((url) => url !== null);
   
         const updatedData = {
@@ -135,7 +134,7 @@ export const EditProduct = () => {
             setSelectedData({ ...selectedData, response: responseData });
             console.log(selectedData)
             setSelectedImages([]);
-            navigate("/");
+            navigate("/profile/onsale");
           })
           .catch((error) => {
             console.error("El error es: ", error);
@@ -184,16 +183,16 @@ const handleAdd = (e) => {
         <div className="box my-5">
       <div className='upload-title'>
             
-        <h3 className='text-center mt-2 pt-3'>
+        <h3 className='text-center  mt-4 pt-3'>
               
                   <strong>Actualiza tu producto</strong>
             </h3>
               </div>
 
 
-             <div className='row me-1 justify-content-around text-center p-4'>
+             <div className='row me-1 justify-content-around text-center    mt-4'>
              
-             <div className='col-xs-10 col-sm-10 col-md-10 col-lg-6 '>
+             <div className='col-xs-10 col-sm-10 col-md-10 col-lg-5 mt-4'>
                   <div><label htmlFor="name">
                     <h6>
                       <strong>Título</strong>
@@ -203,28 +202,29 @@ const handleAdd = (e) => {
                 </div>
 
 
-                <div className='col-xs-10 col-sm-10 col-md-10 col-lg-6 '>
+                <div className='col-xs-10 col-sm-10 col-md-10 col-lg-5  mt-4'>
                   <div><label htmlFor="select-middle">
-                    <h6>
-                      <strong>Marca</strong>
-                    </h6>{" "}
+                  <h6>
+                    <strong>Marca</strong>{" "}
+                    {selectedData.brand.name && <i>Actualmente: {selectedData.brand.name}</i>}
+                  </h6>{" "}
                   </label></div>
                   <select id="select-middle" name="brand"  className="select" onChange={(e) => {handleChange(e) ; getModelsByBrand(e.target.value);}}
                   >
                     <option >Selecciona otro</option>
                     {carBrands.map((brand) => (
-                      <option key={brand.id} value={brand.id}>
+                      <option key={brand.id} value={brand.id} >
                         {brand.name}
                       </option>
                     ))}
                   </select>
                 </div>
 
-                <div className='row me-1 justify-content-around text-center p-4'>
-                <div className='col-xs-10 col-sm-10 col-md-10 col-lg-6 '>
+                <div className='col-xs-10 col-sm-10 col-md-10 col-lg-5  mt-4'>
                   <div><label htmlFor="select-right">
                     <h6>
-                      <strong>Modelo</strong>
+                      <strong>Modelo</strong> {" "}
+                      {selectedData.model.model && <i>Actualmente: {selectedData.model.model}</i>} 
                     </h6>{" "}
                   </label></div>
                   <select id="select-right" name="model"  className="select" onChange={handleModelChange}>
@@ -238,7 +238,7 @@ const handleAdd = (e) => {
                 </div>
              
              
-                <div className='col-xs-10 col-sm-10 col-md-10 col-lg-6 '>
+                <div className='col-xs-10 col-sm-10 col-md-10 col-lg-5  mt-4'>
                   <div><label htmlFor="price">
                     <h6>
                       <strong>Precio</strong>
@@ -246,23 +246,22 @@ const handleAdd = (e) => {
                   </label></div>
                   <input className="select" type="number"name="price" value={selectedData.price} placeholder="2400€" onChange={handleChange}/>
                 </div>
-                </div>
 
 
-                <div className='col-xs-10 col-sm-10 col-md-10 col-lg-6 '>
+                <div className='col-xs-10 col-sm-10 col-md-10 col-lg-5  mt-4'>
                  <div><label htmlFor="select-middle">
                     <h6>
                       <strong>Estado del vehículo</strong>
                     </h6>{" "}
                   </label></div> 
-                  <select id="select-middle" name="state" value={selectedData} className="select" onChange={handleChange}>
+                  <select id="select-middle" name="state" value={selectedData.state} className="select" onChange={handleChange}>
                     <option>Selecciona otro</option>
-                    <option value="NUEVO">Nuevo</option>
-                    <option value="SEMINUEVO">Semi-nuevo</option>
+                    <option value="Nuevo">Nuevo</option>
+                    <option value="Seminuevo">Semi-nuevo</option>
                   </select>
                 </div>
 
-                <div className='col-xs-10 col-sm-10 col-md-10 col-lg-6 '>
+                <div className='col-xs-10 col-sm-10 col-md-10 col-lg-5  mt-4'>
                   <div><label htmlFor="select-right">
                     <h6>
                       <strong>Kilómetros</strong>
@@ -279,9 +278,9 @@ const handleAdd = (e) => {
               </div>
 
 
-              <div className='row me-1 justify-content-around text-center p-4'>
+              <div className='row me-1 justify-content-around text-center lasteditinput'>
 
-              <div className='col-xs-10 col-sm-10 col-md-10 col-lg-6 '>
+              <div className='col-xs-10 col-sm-10 col-md-10 col-lg-5  mt-4'>
                   <div><label htmlFor="name">
                     <h6>
                       <strong>Año de fabricación</strong>
@@ -291,25 +290,26 @@ const handleAdd = (e) => {
                 </div>
 
 
-                <div className='col-xs-10 col-sm-10 col-md-10 col-lg-6 '>
+                <div className='col-xs-10 col-sm-10 col-md-10 col-lg-5  mt-4'>
                   <div><label htmlFor="select-right">
                     <h6>
                       <strong>Combustible</strong>
                     </h6>{" "}
                   </label></div>
+
                   <select id="select-right "name="fuel" value={selectedData.fuel} className="select" onChange={handleChange}>
                     <option>Selecciona otro</option>
-                    <option value="GASOLINA">Gasolina</option>
-                    <option value="DIESEL">Diesel</option>
-                    <option value="ELECTRICO">Eléctrico</option>
-                    <option value="HÍBRIDO">Híbrido</option>
+                    <option value="Gasolina">Gasolina</option>
+                    <option value="Diesel">Diesel</option>
+                    <option value="Eléctrico">Eléctrico</option>
+                    <option value="Hibrido">Híbrido</option>
                   </select>
                 </div>
               </div>
 
 
-              <div className=' specialBox row me-1 justify-content-around text-center p-4'>
-              <div className=' col-xs-10 col-sm-10 col-md-10 col-lg-6 justify-content-center ms-5 mt-5 '></div>
+              <div className=' specialBox row me-1 justify-content-around text-center   mt-4'>
+              <div className=' col-xs-10 col-sm-10 col-md-10 col-lg-5 justify-content-center ms-5 mt-5 '></div>
               <div className="upload-product-description">
                 <div className="description-title">
                   <h5>
@@ -321,7 +321,7 @@ const handleAdd = (e) => {
                 className="upload-textarea-description" 
                 name="description" 
                 rows="7"
-                cols="40"
+                cols="80"
                 placeholder="Te recomendamos encarecidamente incluir algunos detalles clave cómo el número de puertas, plazas disponibles y el tipo de cambio del vehículo."
                 ></textarea>
               </div>
@@ -332,7 +332,7 @@ const handleAdd = (e) => {
                 !selectedImageIds.includes(image.id) && (
                   <div key={image.id}>
                     <img style={{width:'11rem', height:'8rem', border:'.1rem solid black', borderRadius:'.2rem'}} 
-                    src={image.image} a
+                    src={image.image} 
                     lt={`Image ${image.id}`} />
                     <button className="btn" 
                     onClick={(e) => handleDeleteImage(image.id, e)}><i class="fa-solid fa-trash-can" style={{"color": "red"}}></i></button>

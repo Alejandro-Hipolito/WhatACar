@@ -91,6 +91,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 				  localStorage.setItem("token", data.token);
 				  setStore({ "token": data.token });
 				  console.log(data);
+
+				//   if(response.ok){
+				// 	getActions().getFavorites()
+				//   }
 				} catch (error) {
 				  console.error(error);
 				}
@@ -522,7 +526,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				});
 			},
 
-			postGarage: async (name, mail, phone, cif, address, description, web, user_id, image_id) => {
+			postGarage: async (name, mail, phone, cif, address, description, web, user_id, avatar) => {
 				const token = localStorage.getItem("token");
 			  
 				try {
@@ -564,7 +568,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 						description: description,
 						web: web,
 						user_id: user_id,
-						image_id: image_id
+						avatar: avatar
 					  })
 					};
 			  
@@ -632,6 +636,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 				  console.error("Error:", error);
 				});
 			  },
+
+			  
 			  
 			getFavorites: () => {
 				const store = getStore();
@@ -675,11 +681,12 @@ const getState = ({ getStore, getActions, setStore }) => {
 			  
 				  const response = await fetch(`${process.env.BACKEND_URL}api/profile/favorites`, requestOptions);
 				  if (response.ok) {
-					const data = await response.json();
-					console.log(data);
-					const updatedFavorites = [...store.favorites, data];
-					setStore({ favorites: updatedFavorites });
-					localStorage.setItem("favorites", JSON.stringify(updatedFavorites));
+					getActions().getFavorites()
+					// const data = await response.json();
+					// console.log(data);
+					// const updatedFavorites = [...store.favorites, data];
+					// setStore({ favorites: updatedFavorites });
+					// localStorage.setItem("favorites", JSON.stringify(updatedFavorites));
 				  } else {
 					throw new Error('Error al añadir Favorito');
 				  }
@@ -709,6 +716,39 @@ const getState = ({ getStore, getActions, setStore }) => {
 					console.error("Error:", error);
 				  });
 			},
+
+			removeFavorite: async (user_id, product_id) => {
+				const store = getStore();
+
+				const token = localStorage.getItem("token");
+				const requestOptions = {
+				  method: "PUT",
+				  headers: {
+					"Content-Type": "application/json",
+					Authorization: `Bearer ${token}`,
+				  },
+				};
+			  
+				try {
+				  const response = await fetch(
+					`${process.env.BACKEND_URL}api/profile/favorites/${product_id}`,
+					requestOptions
+				  );
+				  if (response.ok) {
+					const updatedFavorites = store.favorites.filter(
+					  (favorite) => favorite.product_id !== product_id
+					);
+					setStore({ favorites: updatedFavorites });
+					localStorage.setItem("favorites", JSON.stringify(updatedFavorites));
+					console.log("Favorite removed successfully");
+				  } else {
+					throw new Error("Error removing favorite");
+				  }
+				} catch (error) {
+				  console.error("Error:", error);
+				}
+			  },
+			  
 
 			getReviews: () => {
 				const store = getStore();
