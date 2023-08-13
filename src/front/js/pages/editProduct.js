@@ -28,21 +28,29 @@ export const EditProduct = () => {
 
 
   // Define base URLs for different product types
-const baseUrl = selectedData.product_type === "COCHE" ? "api/car" : "api/moto";
+const baseUrl = selectedData.product_type === "Coche" ? "api/car" : "api/moto";
 
 // Construct URLs for brands and models based on the product type
 const brandsUrl = `${baseUrl}-brands`;
 const modelsUrl = `${baseUrl}-models?brandId=${selectedBrand}`;
 
 
-  useEffect(() => {
+useEffect(() => {
+  // Fetch the product data
+  fetch(process.env.BACKEND_URL + `api/product/${productid}`)
+    .then((resp) => resp.json())
+    .then((data) => {
+      setSelectedData(data);
+    });
+}, [productid]);
+
+useEffect(() => {
+  // Fetch the brands based on the product type
+  if (selectedData.product_type) {
     getBrands();
-    fetch(process.env.BACKEND_URL + `api/product/${productid}`)
-      .then((resp) => resp.json())
-      .then((data) => {
-        setSelectedData(data);
-      });
-  }, [productid]);
+  }
+}, [selectedData.product_type]);
+
   const handleDeleteImage = (imageId, e) => {
     e.preventDefault();
     const isSelected = selectedImageIds.includes(imageId);
@@ -215,6 +223,7 @@ const handleAdd = (e) => {
       <form onSubmit={handleSubmit}>
         <div className="box my-5">
       <div className='upload-title'>
+        {console.log(selectedData.product_type)}
             
         <h3 className='text-center  mt-4 pt-3'>
               

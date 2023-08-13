@@ -1081,19 +1081,14 @@ def getGarages():
             "user_id": garage.user_id
         }
     garages_list.append(garage_data)
+    print(garages_list)
 
     return jsonify(garages_list), 200
-
 
 @api.route('/create-garage', methods=['POST'])
 @jwt_required()
 def createGarage():
     current_user = get_jwt_identity()
-
-    # Verificar si el garaje ya existe para el usuario actual
-    existing_garage = Garage.query.filter_by(user_id=current_user).first()
-    if existing_garage:
-        return jsonify({"mensaje": "Ya existe un garaje asociado a este usuario"}), 400
 
     try:
         data = request.json
@@ -1105,12 +1100,10 @@ def createGarage():
         web = data.get('web')
         description = data.get('description')
         avatar = data.get('avatar')
-        user_id = data.get('user_id')
 
         if not all([name, mail, phone, address, cif]):
             return jsonify({"mensaje": "No se han completado todos los campos requeridos (nombre, email, teléfono, dirección, descripción o cif)"}), 400
 
-        # Crear el nuevo garaje
         new_garage = Garage(
             name=name,
             mail=mail,
@@ -1122,8 +1115,6 @@ def createGarage():
             avatar=avatar,
             user_id=current_user
         )
-        print(new_garage.serialize())
-        print(db.session.add(new_garage))
         db.session.add(new_garage)
         db.session.commit()
 
@@ -1131,8 +1122,9 @@ def createGarage():
 
     except Exception as e:
         print(e)
-        # Capturar cualquier excepción y devolver una respuesta de error
         return jsonify({"mensaje": f"Error al crear el garaje: {str(e)}"}), 500
+
+
 
 
 #@api.route('/get-images', methods=['GET'])

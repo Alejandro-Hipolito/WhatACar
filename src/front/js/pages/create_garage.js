@@ -82,6 +82,7 @@ const handleAvatarChange = async (e) => {
 };
 
 
+const isGarageUser = store.user.role === 'garage';
 
 
 
@@ -139,7 +140,7 @@ const handleAvatarChange = async (e) => {
         <>
       <div className="flex-container d-flex justify-content-center">
         <div className="container my-5">
-          <h2 className="text-center mt-3 mb-5">Únete a nuestra Red de Talleres</h2>
+          {isGarageUser ? <h2 className="text-center mt-3 mb-5">Únete a nuestra Red de Talleres</h2> : <h2 className="text-center mt-3 mb-5">Usted NO puede crear un taller ya que se registró como usuario normal</h2>}
 
           <form onSubmit={handleSubmit} method="POST">
 
@@ -148,13 +149,13 @@ const handleAvatarChange = async (e) => {
               <div className="col-sm-12 col-md-12 col-lg-6 input-box mx-auto">
                   <div ><label htmlFor="name">Nombre del Taller</label></div>
                   
-                  <input className="mb-3" type="text" placeholder="Talleres Rodríguez" name="name" onChange={handleNameChange}/>
+                  <input disabled={!isGarageUser} className="mb-3" type="text" placeholder="Talleres Rodríguez" name="name" onChange={handleNameChange}/>
                 </div>
               
               <div className="col-sm-12 col-md-12 col-lg-6 input-box mx-auto">
                   <div><label htmlFor="mail">Correo de contacto</label></div>
                   
-                  <input className="mb-3" type="text" placeholder="mitaller@talleres.com" name="mail" onChange={handleMailChange}/>
+                  <input disabled={!isGarageUser} className="mb-3" type="text" placeholder="mitaller@talleres.com" name="mail" onChange={handleMailChange}/>
                 </div>
               </div>
 
@@ -165,14 +166,14 @@ const handleAvatarChange = async (e) => {
               <div className="col-sm-12 col-md-12 col-lg-6 input-box mx-auto">
                   <div><label htmlFor="phone">Teléfono del Taller</label></div>
                   
-                  <input className="mb-3" type="number" placeholder="777 777 777 " name="phone" onChange={handlePhoneChange} />
+                  <input disabled={!isGarageUser} className="mb-3" type="number" placeholder="777 777 777 " name="phone" onChange={handlePhoneChange} />
                 </div>
    
              
               <div className="col-sm-12 col-md-12 col-lg-6 input-box mx-auto">
                   <div><label htmlFor="address">Dirección</label></div>
                   
-                  <input className="mb-3" type="text" placeholder="Av. del corral 7" id="address" name="address" onChange={handleAddressChange} />
+                  <input disabled={!isGarageUser} className="mb-3" type="text" placeholder="Av. del corral 7" id="address" name="address" onChange={handleAddressChange} />
                 </div>
               </div>
          
@@ -185,7 +186,7 @@ const handleAvatarChange = async (e) => {
               <div className="col-sm-12 col-md-12 col-lg-6 input-box mx-auto">
                   <div> <label htmlFor="cif">CIF</label></div>
                  
-                  <input className="mb-3" type="text" id="idNumber" placeholder="123412312H" name="cif" onChange={handleCifChange
+                  <input disabled={!isGarageUser} className="mb-3" type="text" id="idNumber" placeholder="123412312H" name="cif" onChange={handleCifChange
                 } />
                 </div>
             
@@ -193,7 +194,7 @@ const handleAvatarChange = async (e) => {
                   <div>
                   <label htmlFor="web">Sitio Web</label>
                   </div>
-                  <input className="mb-3" type="text" id="idNumber" placeholder="123412312H" name="web" onChange={handleWebChange} />
+                  <input disabled={!isGarageUser} className="mb-3" type="text" id="idNumber" placeholder="123412312H" name="web" onChange={handleWebChange} />
                 </div>
               </div>
 
@@ -202,13 +203,13 @@ const handleAvatarChange = async (e) => {
               <div className="col-sm-12 col-md-12 col-lg-6 input-box mx-auto">
                   <div><label htmlFor="description">Descripción</label></div>
                   
-                  <input  type="text" placeholder="Describe tu taller" name="description" onChange={handleDescriptionChange} />
+                  <input disabled={!isGarageUser} type="text" placeholder="Describe tu taller" name="description" onChange={handleDescriptionChange} />
                 </div>
               
               <div className="col-sm-12 col-md-12 col-lg-6 input-box mx-auto">
                   <div><label htmlFor="description">Foto del Taller</label></div>
 
-                    <input type="file" onChange={handleAvatarChange} placeholder="Elije la foto..."></input>
+                    <input disabled={!isGarageUser} type="file" onChange={handleAvatarChange} placeholder="Elije la foto..."></input>
                   
                   {/* <input type="text" placeholder="Sube tu foto" name="description" onChange={handleImageIdChange} /> */}
                 </div>

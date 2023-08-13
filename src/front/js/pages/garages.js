@@ -16,11 +16,12 @@ export const Garages = () => {
 
     return (
         <div className="container mx-3 row">
+            {console.log(store.garages)}
             {Array.isArray(store.garages) && store.garages.length > 0 ?  (
                 store.garages.map((garage, index) => (
                     <div className="m-5 textGarage col-lg-4 col-md-4 col-sm-10" key={index}>
                         <div className="card mx-auto justify-content-center d-flex align-items-center" style={{ width: "18rem" }}>
-                            <img src="https://neomotor.epe.es/binrepository/990x619/0c62/990d557/none/2594535/UHEL/elegir-taller-confianza-1_285-37667622_20221031082702.jpg" alt="Avatar" className="avatar_image card-img-top"  />
+                            <img src={garage.avatar} alt="Avatar" className="avatar_image card-img-top"  />
                             <div className="card-body">
                                 <h5 className="card-title textGarage">{garage.name}</h5>
                                 <p className="card-text textGarage">{garage.description}</p>
