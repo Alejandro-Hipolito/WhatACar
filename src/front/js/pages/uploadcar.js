@@ -251,7 +251,7 @@ useEffect(() => {
       </div>
           <div className=''>
 
-          {/* <div className="row me-1 justify-content-around text-center">
+          {/* <div className="row   justify-content-around text-center">
               <div className="col-xs-10 col-sm-10 col-md-10 col-lg-6 ">
                 <div className="input-box">
                   <label className="form-floating" htmlFor="full_name">Nombre y apellidos</label>
@@ -262,7 +262,7 @@ useEffect(() => {
               </div> */}
 
 
-            <div className='row me-1 justify-content-around text-center p-4'>
+            <div className='row   justify-content-around text-center p-4'>
               
               <div className='col-xs-10 col-sm-10 col-md-10 col-lg-6 '>
                 <div>
@@ -291,7 +291,7 @@ useEffect(() => {
 
 
 
-            <div className='row me-1 justify-content-around text-center p-4'>
+            <div className='row   justify-content-around text-center p-4'>
               
             <div className='col-xs-10 col-sm-10 col-md-10 col-lg-6 '>
                 <div>
@@ -316,7 +316,7 @@ useEffect(() => {
             </div>
 
 
-         <div className='row me-1 justify-content-around text-center p-4'>
+         <div className='row   justify-content-around text-center p-4'>
           
               <div className='col-xs-10 col-sm-10 col-md-10 col-lg-6'>
                 <div>
@@ -346,8 +346,8 @@ useEffect(() => {
 
 
 
-            <div className='row me-1 justify-content-around text-center p-4'>
-            <div className='row me-1 justify-content-around text-center'>
+            <div className='row   justify-content-around text-center p-4'>
+            <div className='row   justify-content-around text-center'>
               <div className='col-xs-10 col-sm-10 col-md-10 col-lg-6'>
                 <div>
                 <label htmlFor='name'> <h6><strong>Año de fabricación</strong></h6> </label>
@@ -381,18 +381,18 @@ useEffect(() => {
             </div>
 
 
-            <div className=' specialBox row me-1 justify-content-around text-center p-4'>
-              <div className=' col-xs-10 col-sm-10 col-md-10 col-lg-6 justify-content-center ms-5 mt-5 '>
-                <div className='description-title text-center justify-content-center d-flex'>
+            <div className=' specialBox row   justify-content-around text-center  p-4'>
+              <div className='   ms-5 mt-5 '>
+                <div className=' description-title text-center justify-content-center d-flex'>
                   <h4><strong>Descripción:</strong></h4>
                 </div>
-                <div className="  justify-content-center d-flex text-center align-items-center m-auto">
+                <div style={{width:'60rem'}} className=" desctext  text-center align-items-center m-auto">
                 <textarea 
                 onChange={e => handleChange(e)} 
                 className='container p-3' 
                 name="description" 
                 rows="7" 
-                cols="40" 
+                cols="38" 
                 placeholder='Te recomendamos encarecidamente incluir 
                 algunos detalles clave cómo el número de puertas, 
                 plazas disponibles y el tipo de cambio del vehículo. '
@@ -409,7 +409,7 @@ useEffect(() => {
                 <div className='m-auto justify-content-center'>
                   <div className="container d-flex  justify-content-center mt-3">
                    
-                    <h6 className='justify-content-center'><strong>Imágenes:</strong></h6>
+                    <h4 className='justify-content-center'><strong>Imágenes:</strong></h4>
                  
                   </div>
                   <Dropzone 
@@ -422,7 +422,7 @@ useEffect(() => {
                       
 
             
-                <div className='row me-1 justify-content-around text-center'>    
+                <div className='row   justify-content-around text-center'>    
                   <section >
                     <div {...getRootProps({ "className": "dropzone" })} >
                     <input {...getInputProps()} />
@@ -435,7 +435,7 @@ useEffect(() => {
                     )}
                   
                   </Dropzone>
-                  <div className='mb-5 container justify-content-center mx-auto mt-2'>
+                  <div className='mb-5 container justify-content-center mx-auto mt-2 classmar'>
                     <div className={`dropzone segundo d-flex justify-content-center ${hasSelectedImages 
                       ? "" : "d-none"}`}>
                     {selectedImages.map((selectedImage, index) => (
