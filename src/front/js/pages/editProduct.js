@@ -25,6 +25,16 @@ export const EditProduct = () => {
     description: "",
     images: [],
   });
+
+
+  // Define base URLs for different product types
+const baseUrl = selectedData.product_type === "COCHE" ? "api/car" : "api/moto";
+
+// Construct URLs for brands and models based on the product type
+const brandsUrl = `${baseUrl}-brands`;
+const modelsUrl = `${baseUrl}-models?brandId=${selectedBrand}`;
+
+
   useEffect(() => {
     getBrands();
     fetch(process.env.BACKEND_URL + `api/product/${productid}`)
@@ -57,17 +67,27 @@ export const EditProduct = () => {
     setSelectedModel(ev.target.value);
     setSelectedData({ ...selectedData, model: ev.target.value });
   };
+  // const getBrands = () => {
+  //   fetch(process.env.BACKEND_URL + "api/car-brands")
+  //     .then((resp) => resp.json())
+  //     .then((data) => {
+  //       setCarBrands(data);
+  //     })
+  //     .catch((err) => console.error(err));
+  // };
+
   const getBrands = () => {
-    fetch(process.env.BACKEND_URL + "api/car-brands")
+    fetch(process.env.BACKEND_URL + brandsUrl) // Use the constructed URL
       .then((resp) => resp.json())
       .then((data) => {
         setCarBrands(data);
       })
       .catch((err) => console.error(err));
   };
+
   const getModelsByBrand = (brandId) => {
     if (brandId !== selectedBrand) {
-      fetch(process.env.BACKEND_URL + `api/car-models?brandId=${brandId}`)
+      fetch(process.env.BACKEND_URL + modelsUrl) // Use the constructed URL
         .then((resp) => resp.json())
         .then((data) => {
           setCarModels(data);
@@ -77,6 +97,19 @@ export const EditProduct = () => {
         .catch((err) => console.error(err));
     }
   };
+
+  // const getModelsByBrand = (brandId) => {
+  //   if (brandId !== selectedBrand) {
+  //     fetch(process.env.BACKEND_URL + `api/car-models?brandId=${brandId}`)
+  //       .then((resp) => resp.json())
+  //       .then((data) => {
+  //         setCarModels(data);
+  //         setSelectedBrand(brandId);
+  //         setSelectedModel("");
+  //       })
+  //       .catch((err) => console.error(err));
+  //   }
+  // };
   const handleSubmit = (event) => {
     event.preventDefault();
   

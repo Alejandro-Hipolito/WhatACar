@@ -227,7 +227,7 @@ useEffect(() => {
                 <input className='select ' type='text' maxLength="100" name='name' placeholder='Título de la publicación' onChange={e => handleChange(e)}/>
               </div>
   
-              <div className='col-xs-10 col-sm-10 col-md-10 col-lg-6'>
+              <div style={{marginLeft: '-20px'}} className='col-xs-10 col-sm-10 col-md-10 col-lg-6'>
                 <div>
                 <label htmlFor='select-middle'> <h6><strong>Marca</strong></h6> </label>
                   </div>
@@ -395,7 +395,7 @@ useEffect(() => {
                               <div>
                               <button onClick={(e) => handleDeleteImage(index, e)}
                               className="btn">
-                              <i class="fa-solid fa-trash-can" style={{"color": "red"}}></i>
+                              <i className="fa-solid fa-trash-can" style={{"color": "red"}}></i>
                                 </button>
                                 </div>
                             </div>

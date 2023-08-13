@@ -74,31 +74,36 @@ const getState = ({ getStore, getActions, setStore }) => {
 			login: async (email, password) => {
 				const store = getStore();
 				const opts = {
-				  method: "POST",
-				  headers: {
-					"Content-Type": "application/json",
-					"Authorization": `Bearer ${store.token}`
-				  },
-				  body: JSON.stringify({
-					email: email,
-					password: password
-				  })
+					method: "POST",
+					headers: {
+						"Content-Type": "application/json",
+						"Authorization": `Bearer ${store.token}`
+					},
+					body: JSON.stringify({
+						email: email,
+						password: password
+					})
 				};
-			  
+			
 				try {
-				  const resp = await fetch(`${process.env.BACKEND_URL}api/login`, opts);
-				  const data = await resp.json();
-				  localStorage.setItem("token", data.token);
-				  setStore({ "token": data.token });
-				  console.log(data);
-
-				//   if(response.ok){
-				// 	getActions().getFavorites()
-				//   }
+					const resp = await fetch(`${process.env.BACKEND_URL}api/login`, opts);
+					const data = await resp.json();
+					localStorage.setItem("token", data.token);
+					setStore({ "token": data.token });
+					console.log(data);
+			
+					// Espera 2 segundos y luego recarga la página
+					setTimeout(() => {
+						window.location.reload();
+					}, 100); // Antes estaba a dos
+			
+					// Otras acciones que quieras realizar después del inicio de sesión exitoso
+					getActions().getFavorites();
 				} catch (error) {
-				  console.error(error);
+					console.error(error);
 				}
-			  },
+			},
+			
 
 			getUser: () => {
 				const store = getStore();

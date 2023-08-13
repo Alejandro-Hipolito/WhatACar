@@ -55,8 +55,8 @@ export const Favorites = () => {
                               <div className="row d-flex justify-content-between">
                                   <h6 style={{color: 'black'}} className="col-8 price_product_profile">
 
-                                //<NavLink to={`/product/${favorites.product_id}`}  style={{ color: 'white', textDecoration: 'none' }} className="link-hover"> EDIT
-                                 // <h6 className="col-8 price_product_profile"> EDIT
+                                {/* //<NavLink to={`/product/${favorites.product_id}`}  style={{ color: 'white', textDecoration: 'none' }} className="link-hover"> EDIT */}
+                                 {/* // <h6 className="col-8 price_product_profile"> EDIT */}
 
                                     {favorites.price}
                                     <i class="fa-solid fa-euro-sign"></i>
@@ -84,12 +84,12 @@ export const Favorites = () => {
                                           style={{"width":"20px","height":"30px", "color": "black" }}>
                                       </lord-icon> */}
                                     </button>
-                                  //</div>EDIT 
+                                  {/* //</div>EDIT 
                                 //</NavLink> EDIT
                               //</div> EDIT
                               //<div className="row limit-text"> EDIT
                                 //  <h6>{favorites.name}</h6> EDIT
-                              //</div> EDIT
+                              //</div> EDIT */}
                             </div>
                         </div>
                          )})}
