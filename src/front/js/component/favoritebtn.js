@@ -7,13 +7,19 @@ export const Favoritebtn = ({ vehicle }) => {
   const [isSameUser, setIsSameUser] = useState(false);
 
   useEffect(() => {
-    setIsFavorite(
-      store.favorites.some((favorite) => favorite.product_id === vehicle.id)
-    );
-    
-    // Verificar si el usuario actual es el mismo que subió el producto
-    setIsSameUser(store.user.id === vehicle.user_id);
-  }, [store.favorites, store.user.id, vehicle.id, vehicle.user_id]);
+    const token = localStorage.getItem('token');
+
+    if (token) {
+      setIsFavorite(
+        store.favorites.some((favorite) => favorite.product_id === vehicle.id)
+      );
+
+      if (store.user && store.user.id === vehicle.user_id) {
+        setIsSameUser(true);
+      }
+    }
+
+  }, [store.favorites, store.user, vehicle.id, vehicle.user_id]);
 
   const handleFav = () => {
     if (!isSameUser) {
@@ -26,15 +32,23 @@ export const Favoritebtn = ({ vehicle }) => {
     }
   };
 
-  // Verificar si el token existe en el localStorage
   const token = localStorage.getItem("token");
-  if (!token || isSameUser) {
-    return null; // No renderizar el componente si no hay token o el mismo usuario
-  }
-
+  
   return (
-    <button onClick={handleFav} className="favbtn">
-      <i className={isFavorite ? "fa-solid fa-heart" : "fa-regular fa-heart"}></i>
-    </button>
+    <div>
+      {token ? (
+        isSameUser ? (
+          <div>
+            
+          </div>
+        ) : (
+          <button onClick={handleFav} className="favbtn" disabled={isSameUser}>
+            <i className={isFavorite ? "fa-solid fa-heart" : "fa-regular fa-heart"}></i>
+          </button>
+        )
+      ) : (
+        <p>Inicia sesión para añadir a favoritos.</p>
+      )}
+    </div>
   );
 };
