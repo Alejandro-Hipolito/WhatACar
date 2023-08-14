@@ -27,10 +27,8 @@ export const EditProduct = () => {
   });
 
 
-  // Define base URLs for different product types
 const baseUrl = selectedData.product_type === "Coche" ? "api/car" : "api/moto";
 
-// Construct URLs for brands and models based on the product type
 const brandsUrl = `${baseUrl}-brands`;
 const modelsUrl = `${baseUrl}-models?brandId=${selectedBrand}`;
 
@@ -45,7 +43,6 @@ useEffect(() => {
 }, [productid]);
 
 useEffect(() => {
-  // Fetch the brands based on the product type
   if (selectedData.product_type) {
     getBrands();
   }
@@ -72,8 +69,8 @@ useEffect(() => {
     setSelectedData({ ...selectedData, [ev.target.name]: ev.target.value });
   };
   const handleModelChange = (ev) => {
-    setSelectedModel(ev.target.value);
-    setSelectedData({ ...selectedData, model: ev.target.value });
+    const newSelectedModel = ev.target.value;
+    setSelectedModel(newSelectedModel);
   };
   // const getBrands = () => {
   //   fetch(process.env.BACKEND_URL + "api/car-brands")
@@ -94,17 +91,17 @@ useEffect(() => {
   };
 
   const getModelsByBrand = (brandId) => {
-    if (brandId !== selectedBrand) {
-      fetch(process.env.BACKEND_URL + modelsUrl) // Use the constructed URL
-        .then((resp) => resp.json())
-        .then((data) => {
-          setCarModels(data);
-          setSelectedBrand(brandId);
-          setSelectedModel("");
-          console.log(data)
-        })
-        .catch((err) => console.error(err));
-    }
+    const newModelsUrl = `${baseUrl}-models?brandId=${brandId}`;
+  
+    fetch(process.env.BACKEND_URL + newModelsUrl)
+      .then((resp) => resp.json())
+      .then((data) => {
+        setCarModels(data);
+        setSelectedBrand(brandId);
+        setSelectedModel(""); 
+        console.log(data);
+      })
+      .catch((err) => console.error(err));
   };
 
   // const getModelsByBrand = (brandId) => {
@@ -252,7 +249,7 @@ const handleAdd = (e) => {
                     {selectedData.brand.name && <i>Actualmente: {selectedData.brand.name}</i>}
                   </h6>{" "}
                   </label></div>
-                  <select id="select-middle" name="brand"  className="select" onChange={(e) => {handleChange(e) ; getModelsByBrand(e.target.value);}}
+                  <select id="select-middle"  name="brand"  className="select" onChange={(e) => {handleChange(e) ; getModelsByBrand(e.target.value);}}
                   >
                     <option  >Selecciona otro</option>
                     {carBrands.map((brand) => (
@@ -344,7 +341,7 @@ const handleAdd = (e) => {
                     <option>Selecciona otro</option>
                     <option value="Gasolina">Gasolina</option>
                     <option value="Diesel">Diesel</option>
-                    <option value="Eléctrico">Eléctrico</option>
+                    <option value="Electrico">Eléctrico</option>
                     <option value="Hibrido">Híbrido</option>
                   </select>
                 </div>

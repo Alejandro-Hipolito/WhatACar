@@ -132,7 +132,7 @@ return store.user ? (
           {console.log(store.user.avatar)}
           <img
             className="avatar_image"
-            src={store.user.avatar || "https:/c/appsdejoseluis.com/wp-content/uploads/2020/04/face_co.png"}
+            src={store.user.avatar  || "https://www.fundaciocaixaltea.com/wp-content/uploads/2018/01/default-profile.png"}
             // src={store.user.avatar !== null ?  store.user.avatar : "https:/c/appsdejoseluis.com/wp-content/uploads/2020/04/face_co.png"}
             // src={store.user.avatar || "https://appsdejoseluis.com/wp-content/uploads/2020/04/face_co.png"}
 

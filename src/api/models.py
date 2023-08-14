@@ -101,7 +101,7 @@ class fuel_type(Enum):
     DIESEL = 'Diesel'
     GASOLINA = 'Gasolina'
     HIBRIDO = 'Hibrido'
-    ELECTRICO = 'Eléctrico'
+    ELECTRICO = 'Electrico'
 
 class product_type(Enum):
     MOTO = 'Moto'

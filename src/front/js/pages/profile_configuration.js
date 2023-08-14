@@ -117,7 +117,7 @@ export const Profile_configuration = () => {
         <div className="d-lg-flex justify-content-start my-5">
           <img
             className="avatar_image"
-            src={store.user.avatar !== null ?  store.user.avatar : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSMP3iE09DyJabbswPF91MvzLzdy-5BWhjnhk_NAzua&s"}
+            src={store.user.avatar !== null ?  store.user.avatar : "https://www.fundaciocaixaltea.com/wp-content/uploads/2018/01/default-profile.png"}
             
             alt="Avatar"
           />

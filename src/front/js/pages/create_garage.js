@@ -82,7 +82,36 @@ const handleAvatarChange = async (e) => {
 };
 
 
+
+
+
+
+console.log("User role:", store.user.role);
+
 const isGarageUser = store.user.role === 'garage';
+const [isExistingGarage, setIsExistingGarage] = useState(false);
+
+console.log("Is garage user:", isGarageUser);
+
+
+
+
+useEffect(() => {
+  async function fetchGarages() {
+    try {
+      const response = await fetch("/api/garages");
+      const garages = await response.json();
+      // Check if a garage with the same user_id exists
+      const userGarage = garages.find((garage) => garage.user_id === user_id);
+      if (userGarage) {
+        setIsExistingGarage(true);
+      }
+    } catch (error) {
+      console.error("Error fetching garages:", error);
+    }
+  }
+  fetchGarages();
+}, []);
 
 
 
@@ -94,7 +123,17 @@ const isGarageUser = store.user.role === 'garage';
 
   const handleSubmit = async (ev) => {
     ev.preventDefault();
-
+  
+    if (isExistingGarage) {
+      // Show an alert indicating an error
+      Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: 'Ya tienes un taller registrado.',
+      });
+      return; // Exit the function
+    }
+  
     try {
       await actions.postGarage(
         name,
@@ -107,33 +146,24 @@ const isGarageUser = store.user.role === 'garage';
         user_id,
         avatar 
       );
-        navigate("/profile/garage");
-        Swal.fire({
-          icon: 'success',
-          title: '¡Enhorabuena!',
-          text: 'Has registrado tu Taller!',
-        
-        });
-        actions.getMyGarage()
-
+      navigate("/profile/garage");
+      Swal.fire({
+        icon: 'success',
+        title: '¡Enhorabuena!',
+        text: 'Has registrado tu Taller!',
+      });
+      actions.getMyGarage();
+    } catch (error) {
+      console.log(error);
+      Swal.fire({
+        icon: 'error',
+        title: 'Te faltan datos',
+        text: 'Completa los campos necesarios',
+      });
+      navigate("/profile/garage");
     }
-    catch(error) {
-     
-
-        console.log(error);
-        Swal.fire({
-          icon: 'error',
-          title: 'Te faltan datos',
-          text: 'Completa los campos necesarios',
-     
-        });
-        navigate("/profile/garage")
-      
-       
-    }
- 
-
-    }
+  };
+  
 
     
     return (
@@ -149,7 +179,7 @@ const isGarageUser = store.user.role === 'garage';
               <div className="col-sm-12 col-md-12 col-lg-6 input-box mx-auto">
                   <div ><label htmlFor="name">Nombre del Taller</label></div>
                   
-                  <input disabled={!isGarageUser} className="mb-3" type="text" placeholder="Talleres Rodríguez" name="name" onChange={handleNameChange}/>
+                  <input disabled={isExistingGarage || !isGarageUser} className="mb-3" type="text" placeholder="Talleres Rodríguez" name="name" onChange={handleNameChange}/>
                 </div>
               
               <div className="col-sm-12 col-md-12 col-lg-6 input-box mx-auto">

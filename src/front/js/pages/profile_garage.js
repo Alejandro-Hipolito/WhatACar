@@ -100,6 +100,12 @@ export const Profile_garage = () => {
                         </div>
                         <h4 className="col-8 user_data">{store.garage.address}</h4>
                     </div>
+                    <div className="row row_profile_configuration " >
+                        <div>
+                        <h4 className="col-12 label p-2 input-radius" >Descripción:</h4>
+                        </div>
+                        <h4 className="col-8 user_data">{store.garage.description}</h4>
+                    </div>
 
               
                     

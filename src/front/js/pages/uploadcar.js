@@ -4,6 +4,7 @@ import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import Dropzone from 'react-dropzone';
 import { useNavigate } from "react-router-dom";
 import e from 'cors';
+import Swal from 'sweetalert2';
 
 export const UploadCar = () => {
   const navigate = useNavigate();
@@ -173,18 +174,36 @@ useEffect(() => {
   //     getTypesByModel(selectedModel)
   //   }
   // }, [selectedModel])
-  
-  
-  
-  
+
+
   const handleSubmit = (ev) => {
     ev.preventDefault();
   
-
+    // Check if all required fields are filled
+    if (
+      !data.name ||
+      !data.brand ||
+      !data.model ||
+      !data.price ||
+      !data.state ||
+      !data.km ||
+      !data.year ||
+      !data.fuel ||
+      selectedImages.length === 0
+    ) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Please fill in all required fields and select images!',
+        footer: '<a href="">Why do I have this issue?</a>'
+      });
+      return;
+    }
+  
     const filesToUpload = uploadedFiles.filter((fileName) =>
-    selectedImages.some((image) => image.file.name === fileName)
+      selectedImages.some((image) => image.file.name === fileName)
     );
-
+  
     Promise.all(
       filesToUpload.map((fileName) => {
         const file = selectedImages.find((image) => image.file.name === fileName);
@@ -233,8 +252,86 @@ useEffect(() => {
       })
       .catch((error) => {
         console.error(error);
+  
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Something went wrong!',
+          footer: '<a href="">Why do I have this issue?</a>'
+        });
       });
   };
+  
+  
+  
+  
+  
+  // const handleSubmit = (ev) => {
+  //   ev.preventDefault();
+  
+
+  //   const filesToUpload = uploadedFiles.filter((fileName) =>
+  //   selectedImages.some((image) => image.file.name === fileName)
+  //   );
+
+  //   Promise.all(
+  //     filesToUpload.map((fileName) => {
+  //       const file = selectedImages.find((image) => image.file.name === fileName);
+  //       if (file) {
+  //         const formData = new FormData();
+  //         formData.append("file", file.file);
+  //         formData.append("tags", "codeinfuse, medium, gist");
+  //         formData.append("upload_preset", "WhataCar");
+  //         formData.append("api_key", process.env.API_KEY);
+  //         formData.append("timestamp", Math.floor(Date.now() / 1000));
+  //         setLoading(true);
+  //         return fetch(
+  //           "https://api.cloudinary.com/v1_1/djpzj47gu/image/upload",
+  //           {
+  //             method: "POST",
+  //             body: formData,
+  //           }
+  //         )
+  //           .then((resp) => resp.json())
+  //           .then((data) => {
+  //             //console.log("Uploaded image data:", data);
+  //             return data.secure_url;
+  //           });
+  //       }
+  //     })
+  //   )
+  //     .then((fileURLs) => {
+  //       const config = {
+  //         method: "POST",
+  //         body: JSON.stringify({ ...data, images: fileURLs }),
+  //         headers: {
+  //           "Content-Type": "application/json",
+  //           Authorization: `Bearer ${localStorage.getItem("token")}`,
+  //         },
+  //       };
+  
+  //       fetch(process.env.BACKEND_URL + "api/upload-car", config)
+  //         .then((resp) => resp.json())
+  //         .then((resp) => {
+  //           setData(resp);
+  //           navigate("/");
+  //         })
+  //         .catch((error) => {
+  //           console.error("Error:", error);
+  //         });
+  //     })
+  //     .catch((error) => {
+        
+  //       console.error(error);
+
+  //       Swal.fire({
+  //         icon: 'error',
+  //         title: 'Oops...',
+  //         text: 'Something went wrong!',
+  //         footer: '<a href="">Why do I have this issue?</a>'
+  //       })
+  //     });
+  // };
   
     //setIsSubmitClicked(true);
 
@@ -386,7 +483,7 @@ useEffect(() => {
                 <div className=' description-title text-center justify-content-center d-flex'>
                   <h4><strong>Descripción:</strong></h4>
                 </div>
-                <div style={{width:'60rem'}} className=" desctext  text-center align-items-center m-auto">
+                <div style={{width:'60rem'}} className=" desctext  text-center align-items-center m-auto"> 
                 <textarea 
                 onChange={e => handleChange(e)} 
                 className='container p-3' 

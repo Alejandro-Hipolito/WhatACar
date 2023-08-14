@@ -182,13 +182,19 @@ return store.garage ? (
                         <div>
                         <label className="col-10 col-sm-10 col-md-6 col-lg-5 label p-2 input-radius">Teléfono:</label>
                         </div>
-                        <input className="my-2 col-12 user_data " name="phone" type="text" value={data.phone || store.garage.phone} onChange={handleChange}></input>
+                        <input className="my-2 col-12 user_data " name="phone" type="number" value={data.phone || store.garage.phone} onChange={handleChange}></input>
                     </div>
                     <div className="row my-3">
                         <div>
                         <label className="col-10 col-sm-10 col-md-6 col-lg-5 label p-2 input-radius">Dirección:</label>
                         </div>
                         <input className=" my-2 col-12 user_data " name="address" id="address" type="text" value={data.address || store.garage.address} onChange={handleChange}></input>
+                    </div>
+                    <div className="row my-3">
+                        <div>
+                        <label className="col-10 col-sm-10 col-md-6 col-lg-5 label p-2 input-radius">Descripción:</label>
+                        </div>
+                        <input className=" my-2 col-12 user_data " name="description" id="address" type="text" value={data.description || store.garage.description} onChange={handleChange}></input>
                     </div>
                     <div className="row save_cancel_config">
                         <Link to="/profile/garage" className="btn_config cancel">

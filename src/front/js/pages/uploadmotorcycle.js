@@ -143,15 +143,35 @@ useEffect(() => {
   //   }
   // }, [selectedModel])
   
-  
-  
-  
+
   const handleSubmit = (ev) => {
     ev.preventDefault();
   
+    // Check if all required fields are filled
+    if (
+      !data.name ||
+      !data.brand ||
+      !data.model ||
+      !data.price ||
+      !data.state ||
+      !data.km ||
+      !data.year ||
+      !data.fuel ||
+      selectedImages.length === 0
+    ) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Please fill in all required fields and select images!',
+        footer: '<a href="">Why do I have this issue?</a>'
+      });
+      return;
+    }
+  
     const filesToUpload = uploadedFiles.filter((fileName) =>
-    selectedImages.some((image) => image.file.name === fileName)
+      selectedImages.some((image) => image.file.name === fileName)
     );
+  
     Promise.all(
       filesToUpload.map((fileName) => {
         const file = selectedImages.find((image) => image.file.name === fileName);
@@ -200,8 +220,75 @@ useEffect(() => {
       })
       .catch((error) => {
         console.error(error);
+  
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Something went wrong!',
+          footer: '<a href="">Why do I have this issue?</a>'
+        });
       });
   };
+  
+  
+  
+  
+  // const handleSubmit = (ev) => {
+  //   ev.preventDefault();
+  
+  //   const filesToUpload = uploadedFiles.filter((fileName) =>
+  //   selectedImages.some((image) => image.file.name === fileName)
+  //   );
+  //   Promise.all(
+  //     filesToUpload.map((fileName) => {
+  //       const file = selectedImages.find((image) => image.file.name === fileName);
+  //       if (file) {
+  //         const formData = new FormData();
+  //         formData.append("file", file.file);
+  //         formData.append("tags", "codeinfuse, medium, gist");
+  //         formData.append("upload_preset", "WhataCar");
+  //         formData.append("api_key", process.env.API_KEY);
+  //         formData.append("timestamp", Math.floor(Date.now() / 1000));
+  //         setLoading(true);
+  //         return fetch(
+  //           "https://api.cloudinary.com/v1_1/djpzj47gu/image/upload",
+  //           {
+  //             method: "POST",
+  //             body: formData,
+  //           }
+  //         )
+  //           .then((resp) => resp.json())
+  //           .then((data) => {
+  //             //console.log("Uploaded image data:", data);
+  //             return data.secure_url;
+  //           });
+  //       }
+  //     })
+  //   )
+  //     .then((fileURLs) => {
+  //       const config = {
+  //         method: "POST",
+  //         body: JSON.stringify({ ...data, images: fileURLs }),
+  //         headers: {
+  //           "Content-Type": "application/json",
+  //           Authorization: `Bearer ${localStorage.getItem("token")}`,
+  //         },
+  //       };
+  
+  //       fetch(process.env.BACKEND_URL + "api/upload-car", config)
+  //         .then((resp) => resp.json())
+  //         .then((resp) => {
+  //           setData(resp);
+  //           navigate("/");
+  //         })
+  //         .catch((error) => {
+  //           console.error("Error:", error);
+  //         });
+  //     })
+  //     .catch((error) => {
+  //       console.error(error);
+  //     });
+  // };
     //setIsSubmitClicked(true);
   
     return (
@@ -345,90 +432,90 @@ useEffect(() => {
               </div>
   
   
-              <div className=' specialBox row me-1 justify-content-around text-center p-4'>
-                <div className=' col-xs-10 col-sm-10 col-md-10 col-lg-6 justify-content-center ms-5 mt-5 '>
-                  <div className='description-title text-center justify-content-center d-flex'>
-                    <h4><strong>Descripción:</strong></h4>
-                  </div>
-                  <div className="  justify-content-center d-flex text-center align-items-center m-auto">
-                  <textarea 
-                  onChange={e => handleChange(e)} 
-                  className='container p-3' 
-                  name="description" 
-                  rows="7" 
-                  cols="40" 
-                  placeholder='Te recomendamos encarecidamente incluir 
-                  algunos detalles clave cómo el número de puertas, 
-                  plazas disponibles y el tipo de cambio del vehículo. '
-                  >
-  
-                  </textarea>
-                  </div>
+              <div className=' specialBox row   justify-content-around text-center  p-4'>
+              <div className='   ms-5 mt-5 '>
+                <div className=' description-title text-center justify-content-center d-flex'>
+                  <h4><strong>Descripción:</strong></h4>
                 </div>
-  
+                <div style={{width:'60rem'}} className=" desctext  text-center align-items-center m-auto"> 
+                <textarea 
+                onChange={e => handleChange(e)} 
+                className='container p-3' 
+                name="description" 
+                rows="7" 
+                cols="38" 
+                placeholder='Te recomendamos encarecidamente incluir 
+                algunos detalles clave cómo el número de puertas, 
+                plazas disponibles y el tipo de cambio del vehículo. '
+                >
+
+                </textarea>
                 </div>
+              </div>
+
+              </div>
                       
                 <div className='upload-innerbox'>
-                
-                  <div className='m-auto justify-content-center'>
-                    <div className="container d-flex  justify-content-center mt-3">
-                     
-                      <h6 className='justify-content-center'><strong>Imágenes:</strong></h6>
-                   
-                    </div>
-                    <Dropzone 
-                      onDrop={handleDrop}
-                      className="m-auto justify-content-center"
-                      onChange={(ev) => setImage(ev.target.value)}
-                      value={image}
-                    >
-                      {({ getRootProps, getInputProps }) => (
-                        
-  
               
-                  <div className='row me-1 justify-content-around text-center'>    
-                    <section >
-                      <div {...getRootProps({ "className": "dropzone" })} >
-                      <input {...getInputProps()} />
-                                  <span className='upload-images-icon'>📁</span>
-                                  <p>Arrastra tus imágenes o clickea para seleccionar</p>
-                              </div>
-                          </section>
-  
-                      </div>
-                      )}
-                    
-                    </Dropzone>
-                    <div className='mb-5 container justify-content-center mx-auto mt-2'>
-                      <div className={`dropzone segundo d-flex justify-content-center ${hasSelectedImages 
-                        ? "" : "d-none"}`}>
-                      {selectedImages.map((selectedImage, index) => (
-                              <div key={index} className="me-3">
-                                <img 
-                                style={{width:'11rem', height:'8rem'}} 
-                                src={selectedImage.url} 
-                                alt={selectedImage.file.name} />
-                                <div>
-                                <button onClick={(e) => handleDeleteImage(index, e)}
-                                className="btn">
-                                <i class="fa-solid fa-trash-can" style={{"color": "red"}}></i>
-                                  </button>
-                                  </div>
-                              </div>
-                            ))}
-                      </div>
-                            
-                      
-                          </div>
-               
-                </div>
-  
-                  <div className='text-center pb-5'>
-                      <button className='btn btn-primary'>¡Sube tu coche!</button>
+                <div className='m-auto justify-content-center'>
+                  <div className="container d-flex  justify-content-center mt-3">
+                   
+                    <h4 className='justify-content-center'><strong>Imágenes:</strong></h4>
+                 
                   </div>
-  
-  
+                  <Dropzone 
+                    onDrop={handleDrop}
+                    className="m-auto justify-content-center"
+                    onChange={(ev) => setImage(ev.target.value)}
+                    value={image}
+                  >
+                    {({ getRootProps, getInputProps }) => (
+                      
+
+            
+                <div className='row   justify-content-around text-center'>    
+                  <section >
+                    <div {...getRootProps({ "className": "dropzone" })} >
+                    <input {...getInputProps()} />
+                                <span className='upload-images-icon'>📁</span>
+                                <p>Arrastra tus imágenes o clickea para seleccionar</p>
+                            </div>
+                        </section>
+
+                    </div>
+                    )}
+                  
+                  </Dropzone>
+                  <div className='mb-5 container justify-content-center mx-auto mt-2 classmar'>
+                    <div className={`dropzone segundo d-flex justify-content-center ${hasSelectedImages 
+                      ? "" : "d-none"}`}>
+                    {selectedImages.map((selectedImage, index) => (
+                            <div key={index} className="me-3">
+                              <img 
+                              style={{width:'11rem', height:'8rem'}} 
+                              src={selectedImage.url} 
+                              alt={selectedImage.file.name} />
+                              <div>
+                              <button onClick={(e) => handleDeleteImage(index, e)}
+                              className="btn">
+                              <i class="fa-solid fa-trash-can" style={{"color": "red"}}></i>
+                                </button>
+                                </div>
+                            </div>
+                          ))}
+                    </div>
+                          
+                    
+                        </div>
+             
+              </div>
+
+                <div className='text-center pb-5'>
+                    <button className='btn btn-primary'>¡Sube tu coche!</button>
                 </div>
+
+
+              </div>
   
   
               

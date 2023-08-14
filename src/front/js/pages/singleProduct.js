@@ -164,16 +164,19 @@ export const SingleProduct = () => {
                   
                     
                  
-                      <div className='col-lg-12 text-center '>
-                        <h4><strong> Descripción: </strong> <br></br></h4>
-                        <div className=' desc-container'>
-                          <p className=' single-description mx-auto d-flex text-start'>
-                            {product.description}
-                            </p>
+                        {product.description !== null && (
+                          <div className="col-lg-12 text-center">
+                            <h4>
+                              <strong> Descripción: </strong> <br />
+                            </h4>
+                            <div className="desc-container">
+                              <p className="single-description mx-auto d-flex text-start">
+                                {product.description}
+                              </p>
+                            </div>
+                          </div>
+                        )}
 
-                        </div>
-
-                      </div>
                     <div className='row'>
                       <div className='col-12 userinfo mt-4'></div>
                     </div>
@@ -186,7 +189,7 @@ export const SingleProduct = () => {
                             <Link to={`/edit-product/${product.id}`} type='btn' className='btn button-edit-vehicle btn-success ms-2'>Editar</Link>) : 
 
                           (
-                            <Link to={'/profile/buys'} onClick={() => StatusTopendingBlocked(product)} className='btn btn-success'>Reservar</Link>
+                            <Link to={'/profile/buys'} onClick={() => StatusTopendingBlocked(product)} className='btn btn-primary'>Reservar</Link>
                           )}
                       </div>
                     </div>
