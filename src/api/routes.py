@@ -1080,7 +1080,9 @@ def getGarages():
             "product_id": garage.product_id,
             "user_id": garage.user_id
         }
-    garages_list.append(garage_data)
+
+        garages_list.append(garage_data)    
+
     print(garages_list)
 
     return jsonify(garages_list), 200

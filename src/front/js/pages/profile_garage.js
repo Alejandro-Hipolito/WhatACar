@@ -11,10 +11,16 @@ export const Profile_garage = () => {
     const [showFileInput, setShowFileInput] = useState(false); 
 
 
-    useEffect (() => {
-         
-        actions.getMyGarage()
-    }, [])
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            actions.getMyGarage();
+        }, 1000);
+    
+        return () => {
+            clearTimeout(timer);
+        };
+    }, []);
+    
 
     const handleDelete = () => {
 
@@ -49,7 +55,8 @@ export const Profile_garage = () => {
            
             <div className="container_profile">
                 <div className="avatar_container pb-4">
-                    <img src={store.garage.avatar} alt="Avatar" className="avatar_image" />
+                    {console.log(store.garage.avatar)}
+                    <img src={store.garage.avatar !== "" ? store.garage.avatar : "https://neomotor.epe.es/binrepository/990x619/0c62/990d557/none/2594535/UHEL/elegir-taller-confianza-1_285-37667622_20221031082702.jpg"} alt="Avatar" className="avatar_image" />
                     {/* <img src="https://neomotor.epe.es/binrepository/990x619/0c62/990d557/none/2594535/UHEL/elegir-taller-confianza-1_285-37667622_20221031082702.jpg" alt="Avatar" className="avatar_image" /> */}
 
                  

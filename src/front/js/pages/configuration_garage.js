@@ -12,9 +12,16 @@ export const Configuration_Garage = () => {
 
     const navigate =useNavigate();
 
-    useEffect (() => {
-        actions.getMyGarage()
-    }, [])
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            actions.getMyGarage();
+        }, 1000);
+    
+        return () => {
+            clearTimeout(timer);
+        };
+    }, []);
+    
 
 const handleChange = (e) => {
         setData({ ...data, [e.target.name]: e.target.value });
@@ -134,11 +141,11 @@ return store.garage ? (
             <h2  className="ms-4"><strong>Configurar tu Taller</strong></h2>
 
             <div className="container">
-                <div className="avatar_container pb-4">
-                    <img src={store.garage.avatar !== null ? store.garage.avatar : "https://neomotor.epe.es/binrepository/990x619/0c62/990d557/none/2594535/UHEL/elegir-taller-confianza-1_285-37667622_20221031082702.jpg"} alt="Avatar" className="avatar_image" />
+                <div className="avatar_container pb-4 me-5">
+                    <img src={store.garage.avatar !== "" ? store.garage.avatar : "https://neomotor.epe.es/binrepository/990x619/0c62/990d557/none/2594535/UHEL/elegir-taller-confianza-1_285-37667622_20221031082702.jpg"} alt="Avatar" className="avatar_image" />
                     {/* <img src="https://neomotor.epe.es/binrepository/990x619/0c62/990d557/none/2594535/UHEL/elegir-taller-confianza-1_285-37667622_20221031082702.jpg" alt="Avatar" className="avatar_image" /> */}
 
-                <button className="btn_pencil_avatar" onClick={() => setShowFileInput(true)}>✏️</button>
+                <button className="btn_pencil_avatar ms-4" onClick={() => setShowFileInput(true)}>✏️</button>
                     {showFileInput && ( // Mostrar el input solo si showFileInput es true
                         <input className="profileimginput" type="file" onChange={handleAvatar} placeholder="Elije la foto"></input>
                     )}

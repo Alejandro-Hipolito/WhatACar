@@ -204,53 +204,68 @@ useEffect(() => {
   };
     //setIsSubmitClicked(true);
   
-  return (
-    <div className="container col-12 my-5 justify-content-center ">
-       <form onSubmit={handleSubmit}>
-        <div className="box my-5">
-      <div className='upload-title'>
-        <h3 className='text-center mt-2 pt-3'>
-          <strong>¿Qué vas a vender?</strong>
-        </h3>
-      </div>
-          <div className=''>
-
-
-
-
-            <div className='row me-1 justify-content-around text-center p-4'>
-              
-              <div className='col-xs-10 col-sm-10 col-md-10 col-lg-6 '>
-                <div>
-                <label htmlFor='name'> <h6><strong>Título breve</strong></h6> </label>
-                </div>
-                <input className='select ' type='text' maxLength="100" name='name' placeholder='Título de la publicación' onChange={e => handleChange(e)}/>
-              </div>
+    return (
+      <div className="container col-12 my-5 justify-content-center ">
+        <form onSubmit={handleSubmit}>
+          <div className="box my-5">
+        <div className='upload-title'>
+          <h3 className='text-center mt-2 pt-3'>
+            <strong>¿Qué vas a vender?</strong>
+          </h3>
+        </div>
+            <div className=''>
   
-              <div style={{marginLeft: '-20px'}} className='col-xs-10 col-sm-10 col-md-10 col-lg-6'>
-                <div>
-                <label htmlFor='select-middle'> <h6><strong>Marca</strong></h6> </label>
+            {/* <div className="row me-1 justify-content-around text-center">
+                <div className="col-xs-10 col-sm-10 col-md-10 col-lg-6 ">
+                  <div className="input-box">
+                    <label className="form-floating" htmlFor="full_name">Nombre y apellidos</label>
+                   <div>
+                    <input type="text" placeholder="Ramon Gutierrez" name="full_name" onChange={handleChange}/>
                   </div>
-                  <select id='select-middle' name='brand' className='select' onChange={e => {handleChange(e); getModelsByBrand(e.target.value)}}>
-                    <option >Selecciona marca</option>
-                    {motoBrands.map((brand, index) => (
-                      <option key={index} value={brand.id}>{brand.name}</option>
-                    ))}
-                  </select>
-              </div>
-
-
+                  </div>
+                </div> */}
+  
+  
               <div className='row me-1 justify-content-around text-center p-4'>
-              
+                
+                <div className='col-xs-10 col-sm-10 col-md-10 col-lg-6 '>
+                  <div>
+                  <label htmlFor='name'> <h6><strong>Título del anuncio</strong></h6> </label>
+                 </div> 
+                 <input className='select ' type='text' maxLength="100" name='name' placeholder='Título breve' onChange={e => handleChange(e)}/>
+                </div>
+  
+  
+    
+                <div className='col-xs-10 col-sm-10 col-md-10 col-lg-6 '>
+                  <div>
+                  <label htmlFor='select-middle'> <h6><strong>Marca</strong></h6> </label>
+                    </div>
+                    <select id='select-middle' name='brand' className='select' onChange={e => {handleChange(e); getModelsByBrand(e.target.value)}}>
+                      <option >Selecciona otro</option>
+                      {motoBrands.map((brand, index) => (
+                        <option key={index} value={brand.id}>{brand.name}</option>
+                      ))}
+                    </select>
+                </div>
+  
+  
+                </div>
+  
+  
+  
+  
+              <div className='row me-1 justify-content-around text-center p-4'>
+                
               <div className='col-xs-10 col-sm-10 col-md-10 col-lg-6 '>
                   <div>
                   <label htmlFor='select-right'> <h6><strong>Modelo</strong></h6> </label>
                   </div>
                   <select id='select-right' name='model' className='select' onChange={e => handleModelChange(e)} >
-                  <option >Selecciona otro</option>
-                    {motoModels.map((model, index) => (
-                      <option key={index} value={model.id}>{model.model}</option>
-                    ))}
+                    <option >Selecciona otro</option>
+                      {motoModels.map((model, index) => (
+                        <option key={index} value={model.id}>{model.model}</option>
+                      ))}
                     </select>
                 </div>
   
@@ -263,167 +278,167 @@ useEffect(() => {
                 </div>
   
               </div>
-
-         <div className='row me-1 justify-content-around text-center p-4'>
-          
-              <div className='col-xs-10 col-sm-10 col-md-10 col-lg-6'>
-                <div>
-                <label htmlFor='select-middle'> <h6><strong>Estado del vehículo</strong></h6> </label>
-                </div>
-                <select id='select-middle' name='state' className='select ' onChange={e => handleChange(e)}>
-                  <option >Selecciona estado</option>
-                  <option value='NUEVO'>Nuevo</option>
-                  <option value='SEMINUEVO'  >Semi-nuevo</option>
-                </select>
-              </div>
-
-              <div className='col-xs-10 col-sm-10 col-md-10 col-lg-6'>
-                <div>
-                <label htmlFor='select-right'> <h6><strong>Kilómetros</strong></h6> </label>
-               </div>
-               <select id='select-right' name='km' className='select ' onChange={e => handleChange(e)}>
-                  <option >Selecciona kilometraje</option>
-                  <option value='1000'>Cómo nuevo: de 0 a 1,000</option>
-                  <option value='50000'  >Bajo kilometraje: de 1,000 a 50,000</option>
-                  <option value='100000'>Kilometraje moderado: de 50,000 a 100,000</option>
-                  <option value='100000'>Alto kilometraje: Más de 100,000</option>
-                </select>
-              </div>
-            </div>
-           
-
-
-
-            <div className='row me-1 justify-content-around text-center p-4'>
-            <div className='row me-1 justify-content-around text-center'>
-              <div className='col-xs-10 col-sm-10 col-md-10 col-lg-6'>
-                <div>
-                <label htmlFor='name'> <h6><strong>Año de fabricación</strong></h6> </label>
-                </div>
-                <input className='select ' type='number'  name='year' placeholder='Ej.: 2020' onChange={e => handleChange(e)}/>
-              </div>
-
-              {/* <div className='col-3 ms-5 me-5'>
-                <label htmlFor='select-middle'> <h6><strong>Tipo de coche</strong></h6> </label>
-                <select id='select-middle' name='model' className='select' onChange={e => handleModelChange(e)}>
-                  <option value={selectedType}>{selectedType}</option>
-                </select>
-              </div> */}
-
-
-
-              <div className='col-xs-10 col-sm-10 col-md-10 col-lg-6'>
-                <div>
-                <label htmlFor='select-right'> <h6><strong>Combustible</strong></h6> </label>
-                 </div>
-                  <select id='select-right' name='fuel' className='select ' onChange={e => handleChange(e)}>
-                    <option >Selecciona combustible</option>
-                    <option value='GASOLINA'  >Gasolina</option>
-                    <option value='DIESEL'>Diesel</option>
-                    <option value='ELECTRICO'>Eléctrico</option>
-                    <option value='HIBRIDO'>Híbrido</option>
-
+  
+  
+           <div className='row me-1 justify-content-around text-center p-4'>
+            
+                <div className='col-xs-10 col-sm-10 col-md-10 col-lg-6'>
+                  <div>
+                  <label htmlFor='select-middle'> <h6><strong>Estado del vehículo</strong></h6> </label>
+                  </div>
+                  <select id='select-middle' name='state' className='select ' onChange={e => handleChange(e)}>
+                    <option >Selecciona estado</option>
+                    <option value='NUEVO'>Nuevo</option>
+                    <option value='SEMINUEVO'  >Semi-nuevo</option>
                   </select>
-              </div>
-            </div>
-            </div>
-
-
-            <div className=' specialBox row me-1 justify-content-around text-center p-4'>
-              <div className=' col-xs-10 col-sm-10 col-md-10 col-lg-6 justify-content-center ms-5 mt-5 '>
-                <div className='description-title text-center justify-content-center d-flex'>
-                  <h4><strong>Descripción:</strong></h4>
                 </div>
-                <div className="  justify-content-center d-flex text-center align-items-center m-auto">
-                <textarea 
-                onChange={e => handleChange(e)} 
-                className='container p-3' 
-                name="description" 
-                rows="7" 
-                cols="40" 
-                placeholder='Te recomendamos encarecidamente incluir 
-                algunos detalles clave cómo el número de puertas, 
-                plazas disponibles y el tipo de cambio del vehículo. '
-                >
-
-                </textarea>
+  
+                <div className='col-xs-10 col-sm-10 col-md-10 col-lg-6'>
+                  <div>
+                  <label htmlFor='select-right'> <h6><strong>Kilómetros</strong></h6> </label>
+                 </div>
+                 <select id='select-right' name='km' className='select ' onChange={e => handleChange(e)}>
+                    <option >Selecciona kilometraje</option>
+                    <option value='1000'>Cómo nuevo: de 0 a 1,000</option>
+                    <option value='50000'  >Bajo kilometraje: de 1,000 a 50,000</option>
+                    <option value='100000'>Kilometraje moderado: de 50,000 a 100,000</option>
+                    <option value='100000'>Alto kilometraje: Más de 100,000</option>
+                  </select>
                 </div>
               </div>
-
+             
+  
+  
+  
+              <div className='row me-1 justify-content-around text-center p-4'>
+              <div className='row me-1 justify-content-around text-center'>
+                <div className='col-xs-10 col-sm-10 col-md-10 col-lg-6'>
+                  <div>
+                  <label htmlFor='name'> <h6><strong>Año de fabricación</strong></h6> </label>
+                  </div>
+                  <input className='select ' type='number'  name='year' placeholder='Ej.: 2020' onChange={e => handleChange(e)}/>
+                </div>
+  
+                {/* <div className='col-3 ms-5 me-5'>
+                  <label htmlFor='select-middle'> <h6><strong>Tipo de coche</strong></h6> </label>
+                  <select id='select-middle' name='model' className='select' onChange={e => handleModelChange(e)}>
+                    <option value={selectedType}>{selectedType}</option>
+                  </select>
+                </div> */}
+  
+  
+  
+                <div className='col-xs-10 col-sm-10 col-md-10 col-lg-6'>
+                  <div>
+                  <label htmlFor='select-right'> <h6><strong>Combustible</strong></h6> </label>
+                   </div>
+                    <select id='select-right' name='fuel' className='select ' onChange={e => handleChange(e)}>
+                      <option >Selecciona combustible</option>
+                      <option value='GASOLINA'  >Gasolina</option>
+                      <option value='DIESEL'>Diesel</option>
+                      <option value='ELECTRICO'>Eléctrico</option>
+                      <option value='HIBRIDO'>Híbrido</option>
+  
+                    </select>
+                </div>
               </div>
-                    
-              <div className='upload-innerbox'>
+              </div>
+  
+  
+              <div className=' specialBox row me-1 justify-content-around text-center p-4'>
+                <div className=' col-xs-10 col-sm-10 col-md-10 col-lg-6 justify-content-center ms-5 mt-5 '>
+                  <div className='description-title text-center justify-content-center d-flex'>
+                    <h4><strong>Descripción:</strong></h4>
+                  </div>
+                  <div className="  justify-content-center d-flex text-center align-items-center m-auto">
+                  <textarea 
+                  onChange={e => handleChange(e)} 
+                  className='container p-3' 
+                  name="description" 
+                  rows="7" 
+                  cols="40" 
+                  placeholder='Te recomendamos encarecidamente incluir 
+                  algunos detalles clave cómo el número de puertas, 
+                  plazas disponibles y el tipo de cambio del vehículo. '
+                  >
+  
+                  </textarea>
+                  </div>
+                </div>
+  
+                </div>
+                      
+                <div className='upload-innerbox'>
+                
+                  <div className='m-auto justify-content-center'>
+                    <div className="container d-flex  justify-content-center mt-3">
+                     
+                      <h6 className='justify-content-center'><strong>Imágenes:</strong></h6>
+                   
+                    </div>
+                    <Dropzone 
+                      onDrop={handleDrop}
+                      className="m-auto justify-content-center"
+                      onChange={(ev) => setImage(ev.target.value)}
+                      value={image}
+                    >
+                      {({ getRootProps, getInputProps }) => (
+                        
+  
               
-              <div className='m-auto justify-content-center'>
-                <div className="container d-flex  justify-content-center mt-3">
-                 
-                  <h6 className='justify-content-center'><strong>Imágenes:</strong></h6>
+                  <div className='row me-1 justify-content-around text-center'>    
+                    <section >
+                      <div {...getRootProps({ "className": "dropzone" })} >
+                      <input {...getInputProps()} />
+                                  <span className='upload-images-icon'>📁</span>
+                                  <p>Arrastra tus imágenes o clickea para seleccionar</p>
+                              </div>
+                          </section>
+  
+                      </div>
+                      )}
+                    
+                    </Dropzone>
+                    <div className='mb-5 container justify-content-center mx-auto mt-2'>
+                      <div className={`dropzone segundo d-flex justify-content-center ${hasSelectedImages 
+                        ? "" : "d-none"}`}>
+                      {selectedImages.map((selectedImage, index) => (
+                              <div key={index} className="me-3">
+                                <img 
+                                style={{width:'11rem', height:'8rem'}} 
+                                src={selectedImage.url} 
+                                alt={selectedImage.file.name} />
+                                <div>
+                                <button onClick={(e) => handleDeleteImage(index, e)}
+                                className="btn">
+                                <i class="fa-solid fa-trash-can" style={{"color": "red"}}></i>
+                                  </button>
+                                  </div>
+                              </div>
+                            ))}
+                      </div>
+                            
+                      
+                          </div>
                
                 </div>
-                <Dropzone 
-                  onDrop={handleDrop}
-                  className="m-auto justify-content-center"
-                  onChange={(ev) => setImage(ev.target.value)}
-                  value={image}
-                >
-                  {({ getRootProps, getInputProps }) => (
-                    
-
-          
-              <div className='row me-1 justify-content-around text-center'>    
-                <section >
-                  <div {...getRootProps({ "className": "dropzone" })} >
-                  <input {...getInputProps()} />
-                              <span className='upload-images-icon'>📁</span>
-                              <p>Arrastra tus imágenes o clickea para seleccionar</p>
-                          </div>
-                      </section>
-
+  
+                  <div className='text-center pb-5'>
+                      <button className='btn btn-primary'>¡Sube tu coche!</button>
                   </div>
-                  )}
-                
-                  </Dropzone>
-                  <div className='mb-5 container justify-content-center mt-2'>
-                    <div className={`dropzone d-flex justify-content-center ${hasSelectedImages 
-                      ? "" : "d-none"}`}>
-                    {selectedImages.map((selectedImage, index) => (
-                            <div key={index} className="me-3">
-                              <img 
-                              style={{width:'11rem', height:'8rem'}} 
-                              src={selectedImage.url} 
-                              alt={selectedImage.file.name} />
-                              <div>
-                              <button onClick={(e) => handleDeleteImage(index, e)}
-                              className="btn">
-                              <i className="fa-solid fa-trash-can" style={{"color": "red"}}></i>
-                                </button>
-                                </div>
-                            </div>
-                          ))}
-                    </div>
-                          
-                    
-                        </div>
-             
-              </div>
-
-                <div className='text-center pb-5'>
-                    <button className='btn btn-primary'>¡Sube tu moto!</button>
+  
+  
                 </div>
-
-
-              </div>
-
-
-            
+  
+  
+              
+            </div>
           </div>
-        </div>
-
-
-
-        
+  
+  
+  
+          
+        </form>
       </div>
-      </form>
-    </div>
-  );
-};
+    );
+  };

@@ -26,30 +26,30 @@ export const CarouselCars = () => {
 
 
 
-  const selectFavoriteVehicle = async (user_id, product_id) => {
-    const isProductFavorited = store.favorites.some(
-      (favorite) => favorite.product_id === product_id
-    );
+  // const selectFavoriteVehicle = async (user_id, product_id) => {
+  //   const isProductFavorited = store.favorites.some(
+  //     (favorite) => favorite.product_id === product_id
+  //   );
 
-    if (!isProductFavorited) {
-      try {
-        // ... (código anterior)
-        const updatedFavorites = [...store.favorites, data];
-        setStore({ favorites: updatedFavorites });
+  //   if (!isProductFavorited) {
+  //     try {
+  //       // ... (código anterior)
+  //       const updatedFavorites = [...store.favorites, data];
+  //       setStore({ favorites: updatedFavorites });
 
-        // Actualizar el estado del vehículo seleccionado
-        setVehicles((prevVehicles) =>
-          prevVehicles.map((vehicle) =>
-            vehicle.id === product_id
-              ? { ...vehicle, isFavorited: true }
-              : vehicle
-          )
-        );
-      } catch (error) {
-        console.error("Error:", error);
-      }
-    }
-  };
+  //       // Actualizar el estado del vehículo seleccionado
+  //       setVehicles((prevVehicles) =>
+  //         prevVehicles.map((vehicle) =>
+  //           vehicle.id === product_id
+  //             ? { ...vehicle, isFavorited: true }
+  //             : vehicle
+  //         )
+  //       );
+  //     } catch (error) {
+  //       console.error("Error:", error);
+  //     }
+  //   }
+  // };
 
   return (
     <div className="d-flex overflow-auto my-5 ">

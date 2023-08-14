@@ -47,7 +47,7 @@ export const Favoritebtn = ({ vehicle }) => {
           </button>
         )
       ) : (
-        <p>Inicia sesión para añadir a favoritos.</p>
+        <p> </p>
       )}
     </div>
   );
