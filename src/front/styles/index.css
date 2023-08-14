@@ -113,18 +113,17 @@ li {
   margin-left: 4px;
 }
 
+.landing-link{
+  text-decoration: none;
+  color: black;
+}
 
+.switch {
 
-  
-
-  
-
-  .switch {
-
-    margin-top: -3px;
-    width: 70px; 
-    height: 30px; 
-  }
+  margin-top: -3px;
+  width: 70px; 
+  height: 30px; 
+}
   
   
 #iconProfile {
@@ -168,6 +167,11 @@ li {
   color: rgb(255, 255, 255);
   background-color: #2776ab;
 }
+
+.visual{
+  width: 18rem;
+  margin-left: 10rem; 
+ }
 
 .active{
  

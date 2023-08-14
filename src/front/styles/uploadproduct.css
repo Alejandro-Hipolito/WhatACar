@@ -157,7 +157,7 @@
     overflow-x: scroll;
     flex-wrap: nowrap; 
     overflow-x: auto;
-    max-width: 70rem;
+    max-width: 65rem;
     max-height: 17rem;
     height: 17rem;
     text-align: center;
@@ -169,7 +169,7 @@
     border: 1px solid black;
     border-radius: 12px;
     margin: 4px;
-    margin-left: 5rem;
+    margin-left: 8.1rem;
   }
 
   .imgrender{
@@ -188,6 +188,11 @@
     font-size: 3rem;
   }
 
+  .classmar{
+    margin-right: 7rem!important;
+    max-width: 85%;
+    margin-right: 10rem!important;
+  }
 
   .desc-container{
     /* background-color: grey; */
@@ -314,13 +319,17 @@
 
 
 .specialBox {
-  margin-left: -96px;
+  margin-left: -62px;
   margin-bottom: 6rem;
 }
 
 .lasteditinput{
   margin-bottom: -130px;
 }
+
 .segundo{
   margin-left: 69px!important;
-}
+
+
+.desctext{
+  margin-left: 15rem;
