@@ -14,3 +14,9 @@
 .textAddress {
     font-size: large;
 }
+
+.ctn0{
+    display: flex;
+    flex-direction: row;
+    margin-left: 25.3rem!important;
+}

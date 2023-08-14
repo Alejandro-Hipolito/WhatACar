@@ -117,9 +117,11 @@ export const Profile_configuration = () => {
         <div className="d-lg-flex justify-content-start my-5">
           <img
             className="avatar_image"
-            src={store.user.avatar !== null ?  store.user.avatar : "https:/c/appsdejoseluis.com/wp-content/uploads/2020/04/face_co.png"}
+            src={store.user.avatar !== null ?  store.user.avatar : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSMP3iE09DyJabbswPF91MvzLzdy-5BWhjnhk_NAzua&s"}
+            
             alt="Avatar"
           />
+          {console.log(store.user.avatar)}
         </div>
         <div className="profile_info m-auto pb-5">
           <div className="row_profile_configuration mx-1 justify-content-around text-center mx-1 justify-content-around text-center">

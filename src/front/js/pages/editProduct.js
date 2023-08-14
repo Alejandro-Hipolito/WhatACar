@@ -101,6 +101,7 @@ useEffect(() => {
           setCarModels(data);
           setSelectedBrand(brandId);
           setSelectedModel("");
+          console.log(data)
         })
         .catch((err) => console.error(err));
     }
@@ -253,7 +254,7 @@ const handleAdd = (e) => {
                   </label></div>
                   <select id="select-middle" name="brand"  className="select" onChange={(e) => {handleChange(e) ; getModelsByBrand(e.target.value);}}
                   >
-                    <option >Selecciona otro</option>
+                    <option  >Selecciona otro</option>
                     {carBrands.map((brand) => (
                       <option key={brand.id} value={brand.id} >
                         {brand.name}
