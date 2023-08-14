@@ -35,67 +35,70 @@ export const GripPrice = () => {
 
   return (
     <div className="grip">
-    {store.filteredPrice.length > 0 ? (
-      store.filteredPrice.map((vehicle, index) => (
-        <div className="mx-3 mb-5 mr-0" key={index}>
-          <div className="card card-blur mr-0" style={{ width: "18rem" }}>
-            <div className="flip-card">
-              <div className="flip-card-inner">
-                <div className="flip-card-front">
-                  {/* Update the rendering to show the first image of the vehicle */}
-                  {vehicle.images.length > 0 ? (
-                    <img src={vehicle.images[0].image} className="card-img-top imgCarousel" alt="..." />
-                  ) : (
-                    <img src={carImage} className="card-img-top imgCarousel" alt="..." />
-                  )}
-                </div>
-                <div className="flip-card-back">
-                    <Link to={`product/${vehicle.id}`}  style={{ color: 'white', textDecoration: 'none' }} className="link-hover">
-                      <h3 className="pt-2">{vehicle.brand.name}</h3>
-                    <p>Matriculación: {vehicle.year}</p>
-                    <p>Estado: {vehicle.state}</p>
-                    <p>{vehicle.km} km</p>
-                    <p>{vehicle.fuel}</p>
-                    </Link>
+      <h2 className="mt-4 mb-4">Asequibles</h2>
+      <div className="row">
+        {store.filteredPrice.length > 0 ? (
+          store.filteredPrice.map((vehicle, index) => (
+            <div className="mx-3 mb-5 col-3" key={index}>
+              <div className="card card-blur visual">
+                <div className="flip-card">
+                  <div className="flip-card-inner">
+                    <div className="flip-card-front">
+                      {/* Update the rendering to show the first image of the vehicle */}
+                      {vehicle.images.length > 0 ? (
+                        <img src={vehicle.images[0].image} className="card-img-top imgCarousel" alt="..." />
+                      ) : (
+                        <img src={carImage} className="card-img-top imgCarousel" alt="..." />
+                      )}
+                    </div>
+                    <div className="flip-card-back">
+                        <Link to={`product/${vehicle.id}`}  style={{ color: 'white', textDecoration: 'none' }} className="link-hover">
+                          <h3 className="pt-2">{vehicle.brand.name}</h3>
+                        <p>Matriculación: {vehicle.year}</p>
+                        <p>Estado: {vehicle.state}</p>
+                        <p>{vehicle.km} km</p>
+                        <p>{vehicle.fuel}</p>
+                        </Link>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="card-body d-flex justify-content-between">
+                    <div>
+                      <Link to={`/product/${vehicle.id}`} style={{ color: 'black', textDecoration: 'none' }} className="link-hover">
+                        <h5 className="card-title justify-content-start d-flex" id="vehicleCardTittle">
+                        {vehicle.name.length >= 25 ? vehicle.name.slice(0, 19) + "..." : vehicle.name}
+                        </h5>
+                      </Link>
+                      <h5 className="card-title justify-content-start d-flex">{vehicle.price} €</h5>
+                      <p>
+                        Vendido por{" "}
+                        <span
+                          
+                          style={{ color: 'black', textDecoration: 'none' }}
+                          className="link-hover"
+                        >
+                          {vehicle.user_full_name}
+                        </span>
+                      </p>
+                    </div>
+                    <div className="d-flex justify-content-end">
+                      <Link
+                        id="heartCard"
+                        to=""
+                        onClick={() => selectFavoriteVehicle(store.user.id, vehicle.id)}
+                      >
+                        <script src="https://cdn.lordicon.com/bhenfmcm.js"></script>
+                        <i className={`${favoriteIcon} fa-heart`} style={{"color": "#2e6ad1"}}></i>
+                      </Link>
+                    </div>
                   </div>
                 </div>
               </div>
-              <div className="card-body d-flex justify-content-between">
-                <div>
-                  <Link to={`/product/${vehicle.id}`} style={{ color: 'black', textDecoration: 'none' }} className="link-hover">
-                    <h5 className="card-title justify-content-start d-flex" id="vehicleCardTittle">
-                    {vehicle.name.length >= 25 ? vehicle.name.slice(0, 19) + "..." : vehicle.name}
-                    </h5>
-                  </Link>
-                  <h5 className="card-title justify-content-start d-flex">{vehicle.price} €</h5>
-                  <p>
-                    Vendido por{" "}
-                    <span
-                      
-                      style={{ color: 'black', textDecoration: 'none' }}
-                      className="link-hover"
-                    >
-                      {vehicle.user_full_name}
-                    </span>
-                  </p>
-                </div>
-                <div className="d-flex justify-content-end">
-                  <Link
-                    id="heartCard"
-                    to=""
-                    onClick={() => selectFavoriteVehicle(store.user.id, vehicle.id)}
-                  >
-                    <script src="https://cdn.lordicon.com/bhenfmcm.js"></script>
-                    <i className={`${favoriteIcon} fa-heart`} style={{"color": "#2e6ad1"}}></i>
-                  </Link>
-                </div>
-              </div>
-            </div>
-          </div>
-        ))
-      ) : (
-        <Placeholder_carousel/ >
-      )}
+            ))
+          ) : (
+            <Placeholder_carousel/ >
+          )}
+        </div>
     </div>
   );
 };

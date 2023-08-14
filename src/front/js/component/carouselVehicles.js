@@ -20,24 +20,25 @@ export const CarouselVehicles = () => {
     return (
       <div className="container mb-">
           <div className="row pb-4 my-4">
-
-            
-            <h2>Asequibles</h2>
-        
-                  <CarouselPrice />
+            <Link to={`/view`} className="landing-link">
+                  <h2>Asequibles</h2>
+            </Link>
+            <CarouselPrice />
            </div>
           
            <div className="row pb-4 my-4">
-            <h2>Los más vistosos</h2>
-           
-                  <CarouselDefault />
+            <Link to={`/view`} className="landing-link">
+                  <h2>Los más vistosos</h2>
+            </Link>
+            <CarouselDefault />
             </div>
 
 
            <div className="row pb-4 my-4">
-            <h2>Motos</h2>
-           
-                  <CarouselMotos />
+            <Link to={`/view`} className="landing-link">
+                  <h2>Motos</h2>
+            </Link>
+            <CarouselMotos />
             </div>
 
 

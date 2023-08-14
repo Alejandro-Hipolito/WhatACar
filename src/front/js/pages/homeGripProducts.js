@@ -45,11 +45,7 @@ export const HomeGripProducts = () => {
       );
     }
   };
-
-
-
-
-
+  
   return (
     <div className="text-center ">
       <div className="customDiv container pt-5 flipInX">
