@@ -5,6 +5,10 @@ import { BackendURL } from "./component/backendURL";
 
 import { Home } from "./pages/home";
 import { HomeGripProducts } from "./pages/homeGripProducts";
+import { HomeGripDefault } from "./pages/homeGripdefault";
+import { HomeGripMotos } from "./pages/homeGripMotos";
+import { HomeGripKm } from "./pages/homeGripKm";
+import { HomeGripCars } from "./pages/homeGripCars";
 import { Demo } from "./pages/demo";
 import { Single } from "./pages/single";
 import { Profile_configuration } from "./pages/profile_configuration";
@@ -15,7 +19,6 @@ import { Profile_buys_done } from "./pages/profile_buys_done";
 import { Profile_reviews } from "./pages/profile_reviews";
 import { Configuration } from "./pages/configuration";
 import { Login } from "./pages/login";
-import { On_sale } from "./pages/onSale";
 
 import injectContext from "./store/appContext";
 
@@ -73,6 +76,10 @@ const Layout = () => {
                             <Routes>
                                 <Route element={<Home />} path="/" />
                                 <Route element={<HomeGripProducts />} path="/view" />
+                                <Route element={<HomeGripDefault />} path="/view-default" />
+                                <Route element={<HomeGripMotos />} path="/view-motos" />
+                                <Route element={<HomeGripKm />} path="/view-km" />
+                                <Route element={<HomeGripCars />} path="/view-cars" />
                                 <Route element={<Demo />} path="/demo" />
                                 <Route element={<Login />} path="/login" />
                                 <Route element={<Signup />} path="/signup" />

@@ -27,7 +27,7 @@ export const CarouselVehicles = () => {
            </div>
           
            <div className="row pb-4 my-4">
-            <Link to={`/view`} className="landing-link">
+            <Link to={`/view-default`} className="landing-link">
                   <h2>Los más vistosos</h2>
             </Link>
             <CarouselDefault />
@@ -35,7 +35,7 @@ export const CarouselVehicles = () => {
 
 
            <div className="row pb-4 my-4">
-            <Link to={`/view`} className="landing-link">
+            <Link to={`/view-motos`} className="landing-link">
                   <h2>Motos</h2>
             </Link>
             <CarouselMotos />
@@ -43,16 +43,18 @@ export const CarouselVehicles = () => {
 
 
             <div className="row pb-4 my-4">
-            <h2>De bajo kilometraje</h2>
-         
-                  <CarouselKm />
+            <Link to={`/view-km`} className="landing-link">
+                  <h2>De bajo kilometraje</h2>
+            </Link>
+            <CarouselKm />
             </div>
 
 
-           <div className="row pb-4 my-4">
-            <h2>Coches</h2>
-           
-                  <CarouselCars />
+            <div className="row pb-4 my-4">
+            <Link to={`/view-cars`} className="landing-link">
+                  <h2>Coches</h2>
+            </Link>
+            <CarouselCars />
             </div>
 
 
