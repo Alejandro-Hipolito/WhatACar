@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import lottie from 'lottie-web';
 import { defineElement } from 'lord-icon-element';
 import { Filters } from "./filters";
-import "src/front/styles/index.css";
+import "/workspaces/Watacar_v2/src/front/styles/login.css";
 import { Placeholder_carousel } from "../pages/placeholder_carousel";
 
 export const GripKm = () => {
