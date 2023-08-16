@@ -490,7 +490,7 @@ useEffect(() => {
                 name="description" 
                 rows="7" 
                 cols="38" 
-                placeholder='Te recomendamos encarecidamente incluir 
+                placeholder=' (NO obligatorio) Te recomendamos encarecidamente incluir 
                 algunos detalles clave cómo el número de puertas, 
                 plazas disponibles y el tipo de cambio del vehículo. '
                 >

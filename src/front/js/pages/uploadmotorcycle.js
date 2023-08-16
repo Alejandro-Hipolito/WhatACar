@@ -161,9 +161,8 @@ useEffect(() => {
     ) {
       Swal.fire({
         icon: 'error',
-        title: 'Oops...',
-        text: 'Please fill in all required fields and select images!',
-        footer: '<a href="">Why do I have this issue?</a>'
+        title: 'Rellena los campos!',
+        text: 'Rellena todos los campos y añade alguna imagen (descipción no requerida)',
       });
       return;
     }
@@ -444,7 +443,7 @@ useEffect(() => {
                 name="description" 
                 rows="7" 
                 cols="38" 
-                placeholder='Te recomendamos encarecidamente incluir 
+                placeholder=' (NO obligatorio) Te recomendamos encarecidamente incluir 
                 algunos detalles clave cómo el número de puertas, 
                 plazas disponibles y el tipo de cambio del vehículo. '
                 >
