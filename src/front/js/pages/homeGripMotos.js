@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { Context } from "../store/appContext";
 import "../../styles/home.css";
 import { Link } from "react-router-dom";
@@ -15,7 +15,14 @@ export const HomeGripMotos = () => {
   const [isFilter, setIsFilter]  = useState(false)
   const [dataFilter, setDataFilter] = useState([])
 
-
+  useEffect(() => {
+    const token = localStorage.getItem('token')
+    if(token){
+      actions.getFavorites(); 
+  
+    }
+  
+  }, [])
   
   defineElement(lottie.loadAnimation);
 

@@ -8,6 +8,7 @@ import { defineElement } from 'lord-icon-element';
 import { Filters } from "./filters";
 import "/workspaces/Watacar_v2/src/front/styles/login.css";
 import { Placeholder_carousel } from "../pages/placeholder_carousel";
+import { Favoritebtn } from "./favoritebtn";
 
 export const GripKm = () => {
   defineElement(lottie.loadAnimation);
@@ -77,13 +78,7 @@ export const GripKm = () => {
                         </p>
                         </div>
                         <div className="d-flex justify-content-end">
-                        <Link
-                            id="heartCard"
-                            to=""
-                            onClick={() => selectFavoriteVehicle(store.user.id, vehicle.id)}
-                        >
-                            <i className={`fa-heart ${favoriteIcon}`} style={{"color": "#2e6ad1"}}></i>
-                        </Link>
+                            <Favoritebtn vehicle={vehicle} />
                         </div>
                     </div>
                     </div>

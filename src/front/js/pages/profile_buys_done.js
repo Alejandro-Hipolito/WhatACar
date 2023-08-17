@@ -138,9 +138,6 @@ const StatusToSoldReviewed = (product) => {
                                             <h6 className=" col-12">{product.name}</h6>
                                         </div>
                                         <div className="row">
-                                            <h6 className=" col-12">{product.description}</h6>
-                                        </div>
-                                        <div className="row">
                                             <h6 className=" col-6">{product.state}</h6>
                                             <h6 className=" col-6">{product.price}€</h6>
                                         </div>
