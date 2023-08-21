@@ -3,7 +3,9 @@ import { Context } from "../store/appContext";
 import { NavLink, Link, useNavigate } from "react-router-dom";
 import { Profile_navbar } from "../component/profile_navbar";
 import { Placeholder_profile } from "./placeholder_profile";
-import "/workspaces/Watacar_v2/src/front/styles/profile.css";
+// import "/workspaces/Watacar_v2/src/front/styles/profile.css";
+import "../../styles/profile.css"
+
 export const Profile_configuration = () => {
   const { actions, store } = useContext(Context);
   const [password1, setPassword1] = useState("");

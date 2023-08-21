@@ -1,5 +1,7 @@
 import React from "react";
-import "/workspaces/Watacar_v2/src/front/styles/profile.css";
+// import "/workspaces/Watacar_v2/src/front/styles/profile.css";
+import "../../styles/profile.css"
+
 
 export const Placeholder_carousel = () => {
   const generatePlaceholderCards = () => {

@@ -2,7 +2,9 @@ import { Link } from "react-router-dom";
 import React, { useContext, useState } from "react";
 import { Context } from "../store/appContext";
 import { useNavigate } from "react-router-dom";
-import "/workspaces/Watacar_v2/src/front/styles/login.css";
+// import "/workspaces/Watacar_v2/src/front/styles/login.css";
+
+import "../../styles/login.css"
 
 
 export const Login = () => {

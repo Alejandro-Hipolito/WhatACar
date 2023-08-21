@@ -2,7 +2,9 @@ import React, {useContext, useEffect} from "react";
 import { Context } from "../store/appContext";
 import { NavLink } from "react-router-dom";
 import { Profile_navbar } from "../component/profile_navbar";
-import "/workspaces/Watacar_v2/src/front/styles/profile.css"
+// import "/workspaces/Watacar_v2/src/front/styles/profile.css"
+import "../../styles/profile.css"
+
 
 export const Profile_reviews = () => {
     const {actions, store} = useContext(Context);

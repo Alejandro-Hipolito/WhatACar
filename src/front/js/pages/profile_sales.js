@@ -3,7 +3,9 @@ import { Context } from "../store/appContext";
 import { NavLink } from "react-router-dom";
 import { Profile_navbar } from "../component/profile_navbar";
 import { Sales_navbar } from "../component/Sales_navbar";
-import "/workspaces/Watacar_v2/src/front/styles/profile.css"
+// import "/workspaces/Watacar_v2/src/front/styles/profile.css"
+import "../../styles/profile.css"
+
 
 export const Profile_sales = () => {
     const {actions, store} = useContext(Context);

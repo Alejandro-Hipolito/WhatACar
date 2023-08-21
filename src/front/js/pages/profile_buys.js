@@ -1,7 +1,9 @@
 import React, { useContext, useState, useEffect } from "react";
 import { Context } from "../store/appContext";
 import { Profile_navbar } from "../component/profile_navbar";
-import "/workspaces/Watacar_v2/src/front/styles/profile.css"
+// import "/workspaces/Watacar_v2/src/front/styles/profile.css"
+import "../../styles/profile.css"
+
 import { Purchase_navbar } from "../component/purchase_navbar";
 import { NavLink } from "react-router-dom";
 

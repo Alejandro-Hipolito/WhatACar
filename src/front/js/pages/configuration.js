@@ -2,7 +2,9 @@ import React, { useState, useEffect, useContext } from "react";
 import { Link, useParams, useNavigate } from "react-router-dom";
 import { Context } from "../store/appContext";
 import "/workspaces/Watacar_v2/src/front/styles/configuration.css"
-import "/workspaces/Watacar_v2/src/front/styles/profile.css"
+// import "/workspaces/Watacar_v2/src/front/styles/profile.css"
+import "../../styles/profile.css"
+
 import { text } from "@fortawesome/fontawesome-svg-core";
 import { Placeholder_profile } from "./placeholder_profile.js"
 export const Configuration = () => {
