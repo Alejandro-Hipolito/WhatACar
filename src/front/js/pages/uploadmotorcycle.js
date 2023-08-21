@@ -1,5 +1,7 @@
 import React, {useState, useEffect} from 'react';
-import '/workspaces/Watacar_v2/src/front/styles/uploadproduct.css';
+// import '/workspaces/Watacar_v2/src/front/styles/uploadproduct.css';
+import '../../styles/uploadproduct.css'
+
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import Dropzone from 'react-dropzone';
 import { useNavigate } from "react-router-dom";

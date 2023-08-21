@@ -3,7 +3,9 @@ import { useParams } from 'react-router-dom';
 import { Context } from "../store/appContext";
 import { Link } from 'react-router-dom';
 import UserInfo from './userinfo';
-import "/workspaces/Watacar_v2/src/front/styles/uploadproduct.css"
+// import "/workspaces/Watacar_v2/src/front/styles/uploadproduct.css"
+import '../../styles/uploadproduct.css'
+
 // import "/workspaces/Watacar_v2/src/front/js/pages/singleProduct.js";
 import rigo from "../../img/rigo-baby.jpg" 
 

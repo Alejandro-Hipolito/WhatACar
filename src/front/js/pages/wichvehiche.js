@@ -1,6 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "/workspaces/Watacar_v2/src/front/styles/uploadproduct.css"
+// import "/workspaces/Watacar_v2/src/front/styles/uploadproduct.css"
+
+import '../../styles/uploadproduct.css'
 import { faCar } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faIconName, faMotorcycle } from "@fortawesome/free-solid-svg-icons"; 
