@@ -9,7 +9,9 @@ import { Filters } from "./filters";
 // import "/workspaces/Watacar_v2/src/front/styles/login.css";
 import "../../styles/login.css"
 import { Placeholder_carousel } from "../pages/placeholder_carousel";
-import { Favoritebtn } from "/workspaces/Watacar_v2/src/front/js/component/favoritebtn.js";
+// import { Favoritebtn } from "/workspaces/Watacar_v2/src/front/js/component/favoritebtn.js";
+import { Favoritebtn } from "../../js/component/favoritebtn.js";
+
 
 
 

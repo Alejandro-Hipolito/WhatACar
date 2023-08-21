@@ -1,7 +1,9 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Link, useParams, useNavigate } from "react-router-dom";
 import { Context } from "../store/appContext";
-import "/workspaces/Watacar_v2/src/front/styles/configuration.css"
+// import "/workspaces/Watacar_v2/src/front/styles/configuration.css"
+import "../../styles/configuration.css"
+
 import { Profile_navbar } from "../component/profile_navbar";
 
 export const Configuration_Garage = () => {

@@ -3,7 +3,8 @@ import { Context } from "../store/appContext";
 import { Link } from "react-router-dom";
 import lottie from 'lottie-web';
 import { defineElement } from 'lord-icon-element';
-import "/workspaces/Watacar_v2/src/front/styles/garages.css";
+// import "/workspaces/Watacar_v2/src/front/styles/garages.css";
+import "../../styles/garages.css"
 import { Placeholder_garages } from "./placeholder_garages";
 
 export const Garages = () => {

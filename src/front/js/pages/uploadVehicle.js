@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
-import '/workspaces/Watacar_v2/src/front/styles/uploadproduct.css';
+// import '/workspaces/Watacar_v2/src/front/styles/uploadproduct.css';
+import "../../styles/uploadproduct.css"
 import { Link, useNavigate } from 'react-router-dom';
 
 export const UploadVehicle = () => {
