@@ -106,7 +106,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 			
 
 			getUser: () => {
-				const store = getStore();
+				if(localStorage.getItem("token")){
+					const store = getStore();
 				fetch(process.env.BACKEND_URL + `api/configuration`, {
 					method: "GET",
 					headers: {
@@ -118,6 +119,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 				.then ((response) => {
 					setStore({user: response.data});
 				});
+				} else {
+					return undefined
+				}
+				
 			},
 
 			getToken: () => {
