@@ -546,7 +546,7 @@ useEffect(() => {
                               <div>
                               <button onClick={(e) => handleDeleteImage(index, e)}
                               className="btn">
-                              <i class="fa-solid fa-trash-can" style={{"color": "red"}}></i>
+                              <i className="fa-solid fa-trash-can" style={{"color": "red"}}></i>
                                 </button>
                                 </div>
                             </div>

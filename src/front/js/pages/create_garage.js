@@ -171,7 +171,7 @@ useEffect(() => {
         <>
       <div className="flex-container d-flex justify-content-center">
         <div className="container my-5">
-          {isGarageUser ? <h2 className="text-center mt-3 mb-5">Únete a nuestra Red de Talleres</h2> : <h2 className="text-center mt-3 mb-5">Usted NO puede crear un taller ya que se registró como usuario normal</h2>}
+          {isGarageUser ? <h2 className="text-center mt-3 mb-5">Únete a nuestra Red de Talleres</h2> : <h2 className="text-center mt-3 mb-5">Usted NO puede crear un taller ya que se registró como usuario normal / no está logeado</h2>}
 
           <form onSubmit={handleSubmit} method="POST">
 
@@ -251,7 +251,7 @@ useEffect(() => {
             
             
             <div className="button mt-4">
-              <button className="btn btn-primary btn1">Subir Taller</button>
+              <button className="btn btn-primary btn1" disabled={!isGarageUser} >Subir Taller</button>
             </div>
           </form>
         </div>

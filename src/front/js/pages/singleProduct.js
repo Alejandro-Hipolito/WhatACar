@@ -191,7 +191,7 @@ export const SingleProduct = () => {
                             <Link to={`/edit-product/${product.id}`} type='btn' className='btn button-edit-vehicle btn-success ms-2'>Editar</Link>) : 
 
                           (
-                            <Link to={'/profile/buys'} onClick={() => StatusTopendingBlocked(product)} className='btn btn-primary'>Reservar</Link>
+                            <button to={'/profile/buys'} onClick={() => StatusTopendingBlocked(product)} disabled={!store.token || store.token == ""} className='btn btn-primary'>Reservar</button>
                           )}
                       </div>
                     </div>

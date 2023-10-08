@@ -286,14 +286,14 @@ export const Navbar = () => {
                         <li>
                           <Link
                             to="/profile/buys"
-                            className="dropdown-item justify-content-end d-flex ms-1 mt-1  profileIcons"
+                            className="dropdown-item justify-content-end d-flex ms-1 mt-1 mr-2  profileIcons"
                             onClick={() => {
                               closeMenuOnItemClick();
                               setManuallyClosed(false);
                             }}
                           >
-                            Compras
-                            <i className="fa-solid fa-cart-arrow-down"></i>
+                            Compras 
+                            <i className="fa-solid fa-cart-arrow-down" style={{marginLeft: '0.3rem'}}></i>
                           </Link>
                         </li>
                         <li>

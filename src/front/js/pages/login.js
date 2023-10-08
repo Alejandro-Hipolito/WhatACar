@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import React, { useContext, useState } from "react";
 import { Context } from "../store/appContext";
 import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 // import "/workspaces/Watacar_v2/src/front/styles/login.css";
 
 import "../../styles/login.css"
@@ -32,12 +33,45 @@ export const Login = () => {
     e.preventDefault();
     try {
       await actions.login(email, password);
-      navigate("/");
+      if(store.getToken !== null && store.getToken !== ''){
+        navigate("/");
+      } else {
+        alert('error')
+      }
     } catch (error) {
       console.log(error);
-      navigate("/notfound");
+      Swal.fire({
+        icon: 'error',
+        title: 'Error al iniciar sesión',
+        text: 'El correo electrónico y la contraseña NO coinciden',
+        footer: '<a href="/signup">¿Aún no te has registrado? Haz click aquí</a>'
+      });
+
     }
   };
+
+
+
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+  //   try {
+  //     const loginResponse = await actions.login(email, password);
+  //     if (loginResponse.success) {
+  //       navigate("/");
+  //       alert('bien')
+  //     } else {
+  //       Swal.fire({
+  //         icon: 'error',
+  //         title: 'Error al iniciar sesión',
+  //         text: 'El correo electrónico y la contraseña NO coinciden',
+  //         footer: '<a href="/signup">¿Aún no te has registrado? Haz click aquí</a>'
+  //       });
+  //     }
+  //   } catch (error) {
+  //     console.log(error);
+      
+  //   }
+  // };
 
   const controlSubmit = () => {
    if (!email.includes('@') || password.length<8){

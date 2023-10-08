@@ -70,10 +70,11 @@ useEffect(() => {
             <input
               className="form-control me-2 search-input"
               type="search"
-              placeholder="Busca tu moto o coche"
+              placeholder="Deshabilitado temporalmente"
               aria-label="Search"
               value={searchText}
               onChange={handleSearchChange}
+              disabled
               />
             {displaySearchButton()}
           </div>
