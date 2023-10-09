@@ -8,18 +8,24 @@ export const Favoritebtn = ({ vehicle }) => {
 
   useEffect(() => {
     const token = localStorage.getItem('token');
-
+  
     if (token) {
-      setIsFavorite(
-        store.favorites.some((favorite) => favorite.product_id === vehicle.id)
-      );
-
-      if (store.user && store.user.id === vehicle.user_id) {
-        setIsSameUser(true);
+      try {
+        setIsFavorite(
+          store.favorites && store.favorites.some((favorite) => favorite.product_id === vehicle.id)
+        );
+  
+        if (store.user && store.user.id === vehicle.user_id) {
+          setIsSameUser(true);
+        }
+      } catch (error) {
+        console.error("Error:", error);
+        // Manejar el error aquí
       }
     }
-
+  
   }, [store.favorites, store.user, vehicle.id, vehicle.user_id]);
+  
 
   const handleFav = () => {
     if (!isSameUser) {

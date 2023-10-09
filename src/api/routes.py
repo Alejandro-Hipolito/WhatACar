@@ -856,11 +856,30 @@ def login():
     password = data.get("password")
     if not email or not password:
         return jsonify({"message": "Error: email y contraseña requeridos"}), 400
+
     user = User.query.filter_by(email=email, password=password).first()
+
     if user is None:
-        return("El usuario no es correcto"), 400
+        return jsonify({"message": "El usuario no existe"}), 404
+
     token = create_access_token(identity=user.id)
+    print("el token es: " + token)
+
     return jsonify({"token": token}), 200
+
+
+# @api.route('/login', methods=['POST'])
+# def login():
+#     data = request.json
+#     email = data.get("email")
+#     password = data.get("password")
+#     if not email or not password:
+#         return jsonify({"message": "Error: email y contraseña requeridos"}), 400
+#     user = User.query.filter_by(email=email, password=password).first()
+#     if user is None:
+#         return("El usuario no es correcto"), 400
+#     token = create_access_token(identity=user.id)
+#     return jsonify({"token": token}), 200
 
 
 
