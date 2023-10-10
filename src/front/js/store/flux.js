@@ -97,11 +97,20 @@ const getState = ({ getStore, getActions, setStore }) => {
 						window.location.reload();
 					}, 100); // Antes estaba a dos
 			
-					// Otras acciones que quieras realizar después del inicio de sesión exitoso
 					getActions().getFavorites();
+					getActions().deleteToken(() => {
+						console.log("Token eliminado");
+					  });
 				} catch (error) {
 					console.error(error);
 				}
+			},
+
+			deleteToken: () => {
+				const timer = setTimeout(() => {
+					// Eliminar el token del localstorage
+					localStorage.removeItem('token');
+				  }, 1000 * 60 * 60);
 			},
 			
 
