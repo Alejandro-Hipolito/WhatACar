@@ -144,7 +144,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 
 			  getAllBrands: () => {
-				fetch(process.env.BACKEND_URL + 'api/all-brands')
+
+				const store = getStore()
+
+				if(store.allBrands.length != 0){
+					fetch(process.env.BACKEND_URL + 'api/all-brands')
 				  .then(response => response.json())
 				  .then(response => {
 					if (Array.isArray(response)) {
@@ -158,6 +162,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 				  .catch(error => {
 					console.error('Error al obtener las marcas:', error);
 				  });
+				}
+				
 			  },
 
 			  getFilteredProducts: (brand_id, vehicle_type, min_price, max_price, min_year, max_year, min_km, max_km) => {
@@ -176,61 +182,84 @@ const getState = ({ getStore, getActions, setStore }) => {
 			  
 
 			  getFilteredMotos: () => {
-				fetch(`${process.env.BACKEND_URL}api/search-by-moto`)
-				  .then(response => response.json())
-				  .then(data => {
-					// Almacenar los productos filtrados en store.filterProducts
-					setStore({ filteredMotos: data });
-					console.log("se han recuperado los datos")
-				  })
-				  .catch(error => {
-					// Manejar errores en la solicitud
-					console.error('Error al obtener las MOTOS filtrados:', error);
-				  });
+
+				const store = getStore()
+
+				if(store.filteredMotos.length != 0){
+					fetch(`${process.env.BACKEND_URL}api/search-by-moto`)
+					.then(response => response.json())
+					.then(data => {
+					  // Almacenar los productos filtrados en store.filterProducts
+					  setStore({ filteredMotos: data });
+					  console.log("se han recuperado los datos")
+					})
+					.catch(error => {
+					  // Manejar errores en la solicitud
+					  console.error('Error al obtener las MOTOS filtrados:', error);
+					});
+				}
+				
 			  },
 
 			  getFilteredCars: () => {
-				fetch(`${process.env.BACKEND_URL}api/search-by-car`)
-				  .then(response => response.json())
-				  .then(data => {
-					// Almacenar los productos filtrados en store.filterProducts
-					setStore({ filteredCars: data });
-					console.log("se han recuperado los datos")
-				  })
-				  .catch(error => {
-					// Manejar errores en la solicitud
-					console.error('Error al obtener los COCHES filtrados:', error);
-				  });
+
+				const store = getStore()
+				if(store.filteredCars.length != 0){
+					fetch(`${process.env.BACKEND_URL}api/search-by-car`)
+					.then(response => response.json())
+					.then(data => {
+					  // Almacenar los productos filtrados en store.filterProducts
+					  setStore({ filteredCars: data });
+					  console.log("se han recuperado los datos")
+					})
+					.catch(error => {
+					  // Manejar errores en la solicitud
+					  console.error('Error al obtener los COCHES filtrados:', error);
+					});
+				}
+				
 			  },
 
 
 			  getFilteredPrice: () => {
-				fetch(`${process.env.BACKEND_URL}api/search-by-price`)
-				  .then(response => response.json())
-				  .then(data => {
-					// Almacenar los productos filtrados en store.filterProducts
-					setStore({ filteredPrice: data });
-					console.log("se han recuperado los datos")
-				  })
-				  .catch(error => {
-					// Manejar errores en la solicitud
-					console.error('Error al obtener los COCHES filtrados:', error);
-				  });
+
+				const store = getStore()
+
+				if(store.filteredPrice.length != 0){
+					fetch(`${process.env.BACKEND_URL}api/search-by-price`)
+					.then(response => response.json())
+					.then(data => {
+					  // Almacenar los productos filtrados en store.filterProducts
+					  setStore({ filteredPrice: data });
+					  console.log("se han recuperado los datos")
+					})
+					.catch(error => {
+					  // Manejar errores en la solicitud
+					  console.error('Error al obtener los COCHES filtrados:', error);
+					});
+				}
+				
 			  },
 
 
 			  getFilteredKm: () => {
-				fetch(`${process.env.BACKEND_URL}api/search-by-price`)
-				  .then(response => response.json())
-				  .then(data => {
-					// Almacenar los productos filtrados en store.filterProducts
-					setStore({ filteredKm: data });
-					console.log("se han recuperado los datos")
-				  })
-				  .catch(error => {
-					// Manejar errores en la solicitud
-					console.error('Error al obtener los vehículos filtrados por KM:', error);
-				  });
+
+				const store = getStore()
+
+				if(store.filteredKm.length != 0){
+					fetch(`${process.env.BACKEND_URL}api/search-by-price`)
+					.then(response => response.json())
+					.then(data => {
+					  // Almacenar los productos filtrados en store.filterProducts
+					  setStore({ filteredKm: data });
+					  console.log("se han recuperado los datos")
+					})
+					.catch(error => {
+					  // Manejar errores en la solicitud
+					  console.error('Error al obtener los vehículos filtrados por KM:', error);
+					});
+				}
+				
 			  },
 
 
@@ -624,18 +653,22 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			getAllProducts: () => {
 				const store = getStore();
-				fetch(process.env.BACKEND_URL + `api/products/ONSALE`, {
-					method: "GET",
-					headers: {
-						"Content-Type": "application/json",
-						
-					}
-				})
-				.then (response => response.json())
-				.then ((response) => {
-					setStore({ products: response });
-					console.log(response)
-				})
+				
+				if(store.products.length != 0){
+					fetch(process.env.BACKEND_URL + `api/products/ONSALE`, {
+						method: "GET",
+						headers: {
+							"Content-Type": "application/json",
+							
+						}
+					})
+					.then (response => response.json())
+					.then ((response) => {
+						setStore({ products: response });
+						console.log(response)
+					})
+				}
+				
 			},
 
 			getUsers: () => {
