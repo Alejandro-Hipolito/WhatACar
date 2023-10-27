@@ -74,7 +74,7 @@ export const Login = () => {
   // };
 
   const controlSubmit = () => {
-   if (!email.includes('@') || password.length<8){
+   if (!email.includes('@') || password.length<5){
     return true  
    } else {
     false
