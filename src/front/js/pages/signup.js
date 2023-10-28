@@ -8,7 +8,8 @@ import { useNavigate } from "react-router-dom";
 
 export const Signup = () => {
   const navigate = useNavigate();
-  const [data, setData] = useState("");
+  // const [data, setData] = useState("");
+  const [data, setData] = useState({ password: "" });
   const [eye, setEye] = useState(true); // Estado para controlar la visibilidad de la contraseña
 
   const handleChange = (ev) => {
@@ -131,7 +132,8 @@ export const Signup = () => {
               <strong>* Todos los campos deben ser rellenados</strong>
             </h6>
             <div className="button  py-5">
-              <button className="btn btn-primary btn1">Registrar Usuario</button>
+              <button disabled={data.password.length < 5} className="btn btn-primary btn1">Registrar Usuario</button>
+
             </div>
           </form>
         </div>
