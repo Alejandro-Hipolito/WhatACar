@@ -183,9 +183,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			  getFilteredMotos: () => {
 
-				const store = getStore()
+				// const store = getStore()
 
-				if(store.filteredMotos.length != 0){
+				// if(store.filteredMotos.length != 0){
 					fetch(`${process.env.BACKEND_URL}api/search-by-moto`)
 					.then(response => response.json())
 					.then(data => {
@@ -197,14 +197,14 @@ const getState = ({ getStore, getActions, setStore }) => {
 					  // Manejar errores en la solicitud
 					  console.error('Error al obtener las MOTOS filtrados:', error);
 					});
-				}
+				// }
 				
 			  },
 
 			  getFilteredCars: () => {
 
-				const store = getStore()
-				if(store.filteredCars.length != 0){
+				// const store = getStore()
+				// if(store.filteredCars.length != 0){
 					fetch(`${process.env.BACKEND_URL}api/search-by-car`)
 					.then(response => response.json())
 					.then(data => {
@@ -216,16 +216,16 @@ const getState = ({ getStore, getActions, setStore }) => {
 					  // Manejar errores en la solicitud
 					  console.error('Error al obtener los COCHES filtrados:', error);
 					});
-				}
+				// }
 				
 			  },
 
 
 			  getFilteredPrice: () => {
 
-				const store = getStore()
+				// const store = getStore()
 
-				if(store.filteredPrice.length != 0){
+				// if(store.filteredPrice.length != 0){
 					fetch(`${process.env.BACKEND_URL}api/search-by-price`)
 					.then(response => response.json())
 					.then(data => {
@@ -237,16 +237,16 @@ const getState = ({ getStore, getActions, setStore }) => {
 					  // Manejar errores en la solicitud
 					  console.error('Error al obtener los COCHES filtrados:', error);
 					});
-				}
+				// }
 				
 			  },
 
 
 			  getFilteredKm: () => {
 
-				const store = getStore()
+				// const store = getStore()
 
-				if(store.filteredKm.length != 0){
+				// if(store.filteredKm.length != 0){
 					fetch(`${process.env.BACKEND_URL}api/search-by-price`)
 					.then(response => response.json())
 					.then(data => {
@@ -258,7 +258,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					  // Manejar errores en la solicitud
 					  console.error('Error al obtener los vehículos filtrados por KM:', error);
 					});
-				}
+				// }
 				
 			  },
 
