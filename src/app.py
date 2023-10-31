@@ -26,7 +26,7 @@ ENV = "development" if os.getenv("FLASK_DEBUG") == "1" else "production"
 static_file_dir = os.path.join(os.path.dirname(os.path.realpath(__file__)), '../public/')
 app = Flask(__name__)
 app.config["JWT_SECRET_KEY"] = "super-secret"  # Change this!
-app.config['JWT_ACCESS_TOKEN_EXPIRES'] = timedelta(hours=100)
+app.config['JWT_ACCESS_TOKEN_EXPIRES'] = timedelta(hours=5800)
 jwt = JWTManager(app)
 app.url_map.strict_slashes = False
 
