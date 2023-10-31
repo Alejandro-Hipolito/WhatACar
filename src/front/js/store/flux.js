@@ -98,20 +98,20 @@ const getState = ({ getStore, getActions, setStore }) => {
 					}, 100); // Antes estaba a dos
 			
 					getActions().getFavorites();
-					getActions().deleteToken(() => {
-						console.log("Token eliminado");
-					  });
+					// getActions().deleteToken(() => {
+					// 	console.log("Token eliminado");
+					//   });
 				} catch (error) {
 					console.error(error);
 				}
 			},
 
-			deleteToken: () => {
-				const timer = setTimeout(() => {
-					// Eliminar el token del localstorage
-					localStorage.removeItem('token');
-				  }, 1000 * 60 * 60);
-			},
+			// deleteToken: () => {
+			// 	const timer = setTimeout(() => {
+			// 		// Eliminar el token del localstorage
+			// 		localStorage.removeItem('token');
+			// 	  }, 1000 * 60 * 60);
+			// },
 			
 
 			getUser: () => {

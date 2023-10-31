@@ -52,7 +52,7 @@ export const GripMotos = () => {
                         )}
                         </div>
                         <div className="flip-card-back">
-                            <Link to={`product/${vehicle.id}`}  style={{ color: 'white', textDecoration: 'none' }} className="link-hover">
+                            <Link to={`/product/${vehicle.id}`}  style={{ color: 'white', textDecoration: 'none' }} className="link-hover">
                             <h3 className="pt-2">{vehicle.brand.name}</h3>
                             <p>Matriculación: {vehicle.year}</p>
                             <p>Estado: {vehicle.state}</p>
