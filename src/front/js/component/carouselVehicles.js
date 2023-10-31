@@ -26,12 +26,12 @@ export const CarouselVehicles = () => {
             <CarouselPrice />
            </div>
           
-           <div className="row pb-4 my-4">
+           {/* <div className="row pb-4 my-4">
             <Link to={`/view-default`} className="landing-link">
                   <h2>Los más vistosos</h2>
             </Link>
             <CarouselDefault />
-            </div>
+            </div> */}
 
 
            <div className="row pb-4 my-4">
